@@ -1,0 +1,114 @@
+Intel(R) Advisor can now assist with vectorization and show optimization
+  report messages with your source code.
+See "https://software.intel.com/en-us/intel-advisor-xe" for details.
+
+Intel(R) C++ Intel(R) 64 Compiler Classic for applications running on Intel(R) 64, Version 2021.3.0 Build 20210609_000000
+
+Compiler options: -c -g -std=c++20 -Wall -xHost -O2 -restrict -o vectorization-icc.o -qopt-report=5 -qopt-report-file=vectorization-icc.o.optrpt
+
+    Report from: Interprocedural optimizations [ipo]
+
+  WHOLE PROGRAM (SAFE) [EITHER METHOD]: false
+  WHOLE PROGRAM (SEEN) [TABLE METHOD]: false
+  WHOLE PROGRAM (READ) [OBJECT READER METHOD]: false
+
+INLINING OPTION VALUES:
+  -inline-factor: 100
+  -inline-min-size: 30
+  -inline-max-size: 230
+  -inline-max-total-size: 2000
+  -inline-max-per-routine: 10000
+  -inline-max-per-compile: 500000
+
+In the inlining report below:
+   "sz" refers to the "size" of the routine. The smaller a routine's size,
+      the more likely it is to be inlined.
+   "isz" refers to the "inlined size" of the routine. This is the amount
+      the calling routine will grow if the called routine is inlined into it.
+      The compiler generally limits the amount a routine can grow by having
+      routines inlined into it.
+
+Begin optimization report for: main()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (main()) [1/1=100.0%] vectorization.cpp(22,11)
+  -> EXTERN: (37,11) my_scalar_add(double, double)
+  -> EXTERN: (39,3) my_vector_add(int, double *, double *)
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at vectorization.cpp(28,3)
+   remark #15388: vectorization support: reference a[i] has aligned access   [ vectorization.cpp(29,6) ]
+   remark #15388: vectorization support: reference b[i] has aligned access   [ vectorization.cpp(30,6) ]
+   remark #15305: vectorization support: vector length 4
+   remark #15399: vectorization support: unroll factor set to 4
+   remark #15300: LOOP WAS VECTORIZED
+   remark #15449: unmasked aligned unit stride stores: 2 
+   remark #15475: --- begin vector cost summary ---
+   remark #15476: scalar cost: 6 
+   remark #15477: vector cost: 1.500 
+   remark #15478: estimated potential speedup: 4.000 
+   remark #15488: --- end vector cost summary ---
+   remark #25015: Estimate of max trip count of loop=625
+LOOP END
+
+LOOP BEGIN at vectorization.cpp(33,3)
+   remark #15388: vectorization support: reference b[i] has aligned access   [ vectorization.cpp(34,6) ]
+   remark #15388: vectorization support: reference a[i] has aligned access   [ vectorization.cpp(34,12) ]
+   remark #15388: vectorization support: reference b[i] has aligned access   [ vectorization.cpp(34,19) ]
+   remark #15305: vectorization support: vector length 4
+   remark #15399: vectorization support: unroll factor set to 4
+   remark #15300: LOOP WAS VECTORIZED
+   remark #15448: unmasked aligned unit stride loads: 2 
+   remark #15449: unmasked aligned unit stride stores: 1 
+   remark #15475: --- begin vector cost summary ---
+   remark #15476: scalar cost: 6 
+   remark #15477: vector cost: 1.250 
+   remark #15478: estimated potential speedup: 4.800 
+   remark #15488: --- end vector cost summary ---
+   remark #25015: Estimate of max trip count of loop=625
+LOOP END
+
+
+Non-optimizable loops:
+
+
+LOOP BEGIN at vectorization.cpp(36,3)
+   remark #15543: loop was not vectorized: loop with function call not considered an optimization candidate.
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+vectorization.cpp(22,11):remark #34051: REGISTER ALLOCATION : [main] vectorization.cpp:22
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   14[ rax rdx rcx rsi rdi r12 zmm0-zmm7]
+        
+    Routine temporaries
+        Total         :      34
+            Global    :      14
+            Local     :      20
+        Regenerable   :      11
+        Spilled       :       1
+        
+    Routine stack
+        Variables     :   160004 bytes*
+            Reads     :      12 [2.56e+01 ~ 25.6%]
+            Writes    :      15 [3.33e+01 ~ 33.3%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================

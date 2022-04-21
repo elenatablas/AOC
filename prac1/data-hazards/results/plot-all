@@ -1,0 +1,9 @@
+#!/bin/bash
+
+SCRIPT_DIR="$(readlink -fm "$(dirname "$0")")"
+
+for i in "${SCRIPT_DIR}"/benchmark-data-hazards*.tsv ; do
+    rm -rf "$i.plots/"
+    echo "$(basename "$i")"
+    "${SCRIPT_DIR}"/../benchmark-data-hazards-plots "$i" "$i.plots" 
+done

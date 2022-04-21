@@ -1,0 +1,43 @@
+#!/bin/bash
+
+SCRIPT_DIR="$(readlink -fm "$(dirname "$0")")"
+SCRIPT_COMMAND="$(basename "$0")"
+set -o nounset
+set -o pipefail
+set -o errexit
+trap 'echo "$SCRIPT_COMMAND: error $? at line $LINENO"' ERR
+
+HOST="$(hostname -s | sed 's/-aoc-docker-image$//')"
+OUTPUT_FILE="${OUTPUT_FILE:-benchmark-nbody.$HOST.$(date -I).tsv}"
+
+[ -e "$OUTPUT_FILE" ] && { echo "«$OUTPUT_FILE» already exists and will not be overwritten. Remove it or use another name." >&2 ; exit 1 ; }
+
+VERSIONS_TESTS=(gcc clang icc)
+IMPLEMENTATIONS_DIRS=($(find "${SCRIPT_DIR}" -mindepth 2 -maxdepth 2 -type f -name nbody.cpp -printf '%h\n' | sort) )
+
+REMAKE="${REMAKE:-yes}"
+
+for d in "${IMPLEMENTATIONS_DIRS[@]}" ; do
+    echo "$(basename "$d")"
+    if [[ "$REMAKE" == "yes" ]] ; then
+        pushd "$d" &> /dev/null
+        make clean
+        make all
+        popd &> /dev/null
+    fi
+done
+
+printf 'compiler\timplementation\tGFLOPS\tGFLOPS_err\n' > "$OUTPUT_FILE"
+
+for v in "${VERSIONS_TESTS[@]}" ; do
+    for id in "${IMPLEMENTATIONS_DIRS[@]}" ; do
+        i="$(basename "$id")"
+        echo "Testing compiler $v, implementation $i"
+        stdbuf -oL "$id"/nbody-$v | tee /dev/tty | grep -e 'Average performance:' | tr -s " " | while read l ; do
+            GFLOPS="$(echo "$l" | cut -d " " -f4 | cut -d± -f1)"
+            GFLOPS_err="$(echo "$l" | cut -d " " -f6 | cut -d± -f2)"
+            printf "%s\t%s\t%s\t%s\n" "$v" "$i" "$GFLOPS" "$GFLOPS_err"
+        done >> "${OUTPUT_FILE}"
+    done
+done
+    

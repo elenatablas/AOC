@@ -1,0 +1,251 @@
+Intel(R) Advisor can now assist with vectorization and show optimization
+  report messages with your source code.
+See "https://software.intel.com/en-us/intel-advisor-xe" for details.
+
+Intel(R) C++ Intel(R) 64 Compiler Classic for applications running on Intel(R) 64, Version 2021.3.0 Build 20210609_000000
+
+Compiler options: -c -g -std=c++20 -Wall -xHost -O2 -restrict -o worker-icc.o -qopt-report=5 -qopt-report-file=worker-icc.o.optrpt
+
+    Report from: Interprocedural optimizations [ipo]
+
+  WHOLE PROGRAM (SAFE) [EITHER METHOD]: false
+  WHOLE PROGRAM (SEEN) [TABLE METHOD]: false
+  WHOLE PROGRAM (READ) [OBJECT READER METHOD]: false
+
+INLINING OPTION VALUES:
+  -inline-factor: 100
+  -inline-min-size: 30
+  -inline-max-size: 230
+  -inline-max-total-size: 2000
+  -inline-max-per-routine: 10000
+  -inline-max-per-compile: 500000
+
+In the inlining report below:
+   "sz" refers to the "size" of the routine. The smaller a routine's size,
+      the more likely it is to be inlined.
+   "isz" refers to the "inlined size" of the routine. This is the amount
+      the calling routine will grow if the called routine is inlined into it.
+      The compiler generally limits the amount a routine can grow by having
+      routines inlined into it.
+
+Begin optimization report for: my_scalar_add..xN2vv(double, double)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (my_scalar_add..xN2vv(double, double)) [1/2=50.0%] worker.cpp(12,67)
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+remark #15347: FUNCTION WAS VECTORIZED with xmm, simdlen=2, unmasked, formal parameter types: (vector,vector) 
+remark #15305: vectorization support: vector length 2
+
+    Report from: Code generation optimizations [cg]
+
+worker.cpp(12,67):remark #34051: REGISTER ALLOCATION : [_ZGVxN2vv__Z13my_scalar_adddd] worker.cpp:12
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :   14[ rbx rbp r12-r15 xmm8-xmm15]
+        Assigned     :    2[ zmm0-zmm1]
+        
+    Routine temporaries
+        Total         :      20
+            Global    :       0
+            Local     :      20
+        Regenerable   :       0
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: my_scalar_add..xM2vv(double, double)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (my_scalar_add..xM2vv(double, double)) [1/2=50.0%] worker.cpp(12,67)
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+remark #15347: FUNCTION WAS VECTORIZED with xmm, simdlen=2, masked, formal parameter types: (vector,vector) 
+remark #15305: vectorization support: vector length 2
+
+    Report from: Code generation optimizations [cg]
+
+worker.cpp(12,67):remark #34051: REGISTER ALLOCATION : [_ZGVxM2vv__Z13my_scalar_adddd] worker.cpp:12
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :   14[ rbx rbp r12-r15 xmm8-xmm15]
+        Assigned     :    5[ zmm0-zmm4]
+        
+    Routine temporaries
+        Total         :      26
+            Global    :      19
+            Local     :       7
+        Regenerable   :       1
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: my_scalar_add(double, double)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (my_scalar_add(double, double)) [1/2=50.0%] worker.cpp(12,67)
+
+
+    Report from: Code generation optimizations [cg]
+
+worker.cpp(12,67):remark #34051: REGISTER ALLOCATION : [_Z13my_scalar_adddd] worker.cpp:12
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    2[ zmm0-zmm1]
+        
+    Routine temporaries
+        Total         :      12
+            Global    :       0
+            Local     :      12
+        Regenerable   :       0
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: my_vector_add(int, double *, double *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (my_vector_add(int, double *, double *)) [2/2=100.0%] worker.cpp(16,48)
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at worker.cpp(18,3)
+<Peeled loop for vectorization>
+   remark #25015: Estimate of max trip count of loop=3
+LOOP END
+
+LOOP BEGIN at worker.cpp(18,3)
+   remark #15388: vectorization support: reference a[i] has aligned access   [ worker.cpp(19,5) ]
+   remark #15388: vectorization support: reference a[i] has aligned access   [ worker.cpp(19,5) ]
+   remark #15389: vectorization support: reference b[i] has unaligned access   [ worker.cpp(19,13) ]
+   remark #15381: vectorization support: unaligned access used inside loop body
+   remark #15305: vectorization support: vector length 4
+   remark #15399: vectorization support: unroll factor set to 4
+   remark #15309: vectorization support: normalized vectorization overhead 0.542
+   remark #15300: LOOP WAS VECTORIZED
+   remark #15442: entire loop may be executed in remainder
+   remark #15448: unmasked aligned unit stride loads: 1 
+   remark #15449: unmasked aligned unit stride stores: 1 
+   remark #15450: unmasked unaligned unit stride loads: 1 
+   remark #15475: --- begin vector cost summary ---
+   remark #15476: scalar cost: 8 
+   remark #15477: vector cost: 1.500 
+   remark #15478: estimated potential speedup: 4.430 
+   remark #15488: --- end vector cost summary ---
+LOOP END
+
+LOOP BEGIN at worker.cpp(18,3)
+<Remainder loop for vectorization>
+   remark #15389: vectorization support: reference a[i] has unaligned access   [ worker.cpp(19,5) ]
+   remark #15389: vectorization support: reference a[i] has unaligned access   [ worker.cpp(19,5) ]
+   remark #15389: vectorization support: reference b[i] has unaligned access   [ worker.cpp(19,13) ]
+   remark #15381: vectorization support: unaligned access used inside loop body
+   remark #15305: vectorization support: vector length 4
+   remark #15309: vectorization support: normalized vectorization overhead 2.111
+   remark #15301: REMAINDER LOOP WAS VECTORIZED
+   remark #15442: entire loop may be executed in remainder
+   remark #15448: unmasked aligned unit stride loads: 1 
+   remark #15449: unmasked aligned unit stride stores: 1 
+   remark #15450: unmasked unaligned unit stride loads: 1 
+   remark #15475: --- begin vector cost summary ---
+   remark #15476: scalar cost: 8 
+   remark #15477: vector cost: 1.500 
+   remark #15478: estimated potential speedup: 4.430 
+   remark #15488: --- end vector cost summary ---
+LOOP END
+
+LOOP BEGIN at worker.cpp(18,3)
+<Remainder loop for vectorization>
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+worker.cpp(16,48):remark #34051: REGISTER ALLOCATION : [_Z13my_vector_addiPdS_] worker.cpp:16
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   16[ rax rdx rcx rsi rdi r8-r10 zmm0-zmm7]
+        
+    Routine temporaries
+        Total         :      49
+            Global    :      22
+            Local     :      27
+        Regenerable   :       0
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================

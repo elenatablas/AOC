@@ -1,0 +1,42 @@
+#!/bin/bash
+
+SCRIPT_DIR="$(readlink -fm "$(dirname "$0")")"
+SCRIPT_COMMAND="$(basename "$0")"
+set -o nounset
+set -o pipefail
+set -o errexit
+trap 'echo "$SCRIPT_COMMAND: error $? at line $LINENO"' ERR
+
+HOST="$(hostname -s | sed 's/-aoc-docker-image$//')"
+OUTPUT_FILE="${OUTPUT_FILE:-benchmark-peak-flops.$HOST.$(date -I).tsv}"
+
+[ -e "$OUTPUT_FILE" ] && { echo "«$OUTPUT_FILE» already exists and will not be overwritten. Remove it or use another name." >&2 ; exit 1 ; }
+
+REMAKE="${REMAKE:-yes}"
+
+if [[ "$REMAKE" == "yes" ]] ; then
+    pushd "$SCRIPT_DIR" &> /dev/null
+    make clean
+    make all
+    popd &> /dev/null
+fi
+
+THREADS_MAX="${THREADS_MAX:-$(grep -E processor.: /proc/cpuinfo | wc -l)}"
+THREADS_TESTS="${THREADS_TESTS:-$(seq -s ' ' 1 $THREADS_MAX)}"
+
+VERSIONS_TESTS="gcc clang icc"
+
+printf 'compiler\tthreads\tinner_iterations\tGFLOPS\tGFLOPS_err\n' > "$OUTPUT_FILE"
+
+for v in $VERSIONS_TESTS ; do
+    for t in $THREADS_TESTS ; do
+        echo "Testing $t threads with $v"
+        stdbuf -oL "$SCRIPT_DIR"/peak-flops-$v --threads=$t "$@" | tee /dev/tty | grep -e '^Average time (s):' | tr -s " " | while read l ; do
+            threads="$(echo "$l" | cut -d " " -f9)" # must be == $t
+            inner_iterations="$(echo "$l" | cut -d " " -f12)"
+            GFLOPS="$(echo "$l" | cut -d " " -f6 | cut -d± -f1)"
+            GFLOPS_err="$(echo "$l" | cut -d " " -f6 | cut -d± -f2)"
+            printf "%s\t%s\t%s\t%s\t%s\n" "$v" "$threads" "$inner_iterations" "$GFLOPS" "$GFLOPS_err"
+        done >> "${OUTPUT_FILE}"
+    done 
+done

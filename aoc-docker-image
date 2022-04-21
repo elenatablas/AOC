@@ -1,0 +1,149 @@
+#!/bin/bash
+
+#SCRIPT_DIR="$(readlink -fm "$(dirname "$0")")"
+SCRIPT_COMMAND="$(basename "$0")"
+set -o nounset
+set -o pipefail
+set -o errexit
+trap 'echo "$SCRIPT_COMMAND: error $? at line $LINENO"' ERR
+
+# Opciones de configuración:
+IMAGE_NAME=aoc-prac      # Nombre a usar para la imagen
+BIND_HOST_DIR=.          # Directorio host que se montará en la imagen (en /home/work)
+ENABLE_BIND_HOST_DIR=yes # Montar el directorio del host (yes/no)
+
+cmd_help() {
+   cat 1>&2 <<EOF
+Script para usar el contenedor Docker para las prácticas de AOC.
+
+Uso: $0 [opciones] [comando]
+
+Este programa permite crear la imagen Docker para las práctcas de AOC y/o ejecutar el comando especificado dentro del contenedor. Los programas ejecutados tendrán acceso a los ficheros de un directorio del host. 
+
+Si el comando es «bash» se accederá un shell dentro del contenedor.
+
+Consulta la información disponible sobre esta imagen en el fichero README.aoc-docker-image.txt para saber cómo usarla. 
+
+IMPORTANTE: Se debe ejecutar «$0 --build» la primera vez que se utilice este script para crear la imagen. Una vez hecho esto, se podrán ejecutar los programas contenidos en la imagen.
+
+Este programa requiere que Docker esté instalado. Dependiendo de la configuración del host, en la mayoría de los casos es necesario tener privilegios de root para usar Docker, en cuyo caso este programa debe usarse con «sudo».
+
+Las opciones deben aparecer antes que el comando a ejecutar. Opciones disponibles:
+
+    --build
+        Crea la imagen. Esta opción solo es necesario utilizarla una vez.
+
+    --bind-host-dir=DIR
+        Especifica el directorio del host que se montará en la imagen para poder acceder a sus ficheros. Por defecto se monta el directorio actual.
+
+    --bind-host-dir-disable
+        Desactiva el montaje del directrio del host en el contenedor. Si se usa esta opción, será necesario transferir los ficheros al contenedor para poder trabajar (por ejemplo, usando ssh).
+
+    --write-dockerfile-and-context[=OUTPUT_FILE]
+        Crea un tar.gz conteniendo un Dockerfile y otros ficheros auxiliares. Este archivo puede usarse para construir la imagen del contenedor con «docker build - < OUTPUT_FILE». El nombre por defecto del archivo es «$IMAGE_NAME.build.tar.gz».
+
+    --help
+        Muestra este mensaje de ayuda y termina la ejecución.
+EOF
+}
+
+cmd_write_build_context() {
+    local OF="$(readlink -fm "$1")"
+    local TMPDIR="$(mktemp -d)"
+    cat > "$TMPDIR/Dockerfile" <<EOF
+FROM fedora:34
+
+RUN dnf -y install dnf-plugins-core
+# Desactivamos los repositorios de updates para que la versión de GCC no cambie. LA razón principal no es que no queramos versiones mas nuevas de GCC, sino que ICC utiliza los includes instalados por GCC, pero no es capaz de compilar los de la versión 11.2
+RUN dnf config-manager --set-disabled updates updates-modular
+RUN dnf -y install gcc gcc-c++ 
+RUN dnf -y install clang
+RUN dnf -y install openblas openblas-devel
+RUN dnf -y install gdb
+RUN dnf -y install perf
+RUN dnf -y install gnuplot-minimal
+RUN dnf -y install vim nano --allowerasing
+# Instalar comandos básicos (y kmod porque OneApi lo usa al instalarse)
+RUN dnf -y install less procps-ng which cmake make git kmod hostname lshw dmidecode diffutils findutils
+COPY oneAPI.repo /tmp
+RUN dnf config-manager --add-repo /tmp/oneAPI.repo && rm /tmp/oneAPI.repo
+#RUN dnf -y install intel-basekit intel-hpckit
+RUN dnf -y install intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic-2021.3.0 intel-oneapi-mkl-devel-2021.3.0
+RUN echo "source /opt/intel/oneapi/setvars.sh > /var/log/oneapi-setvars.log" > /etc/profile.d/oneapi-setvars.sh
+#RUN dnf -y update
+# OneApi instala una versión de clang que no usamos y causa conflictos con la del sistema
+RUN rm /opt/intel/oneapi/compiler/2021.3.0/linux/bin/clang*
+RUN git clone https://github.com/Dr-Noob/peakperf.git && cd peakperf && ./build.sh && cp -L peakperf /usr/local/bin/ && cd .. && rm -rf peakperf
+# cpufetch se podría instalar con dnf si no estuvieran desactivados los repositorios de updates
+RUN git clone https://github.com/Dr-Noob/cpufetch.git && cd cpufetch && make && cp -L cpufetch /usr/local/bin/ && cd .. && rm -rf cpufetch
+RUN mkdir /home/work
+WORKDIR /home/work
+EOF
+    cat > "$TMPDIR/oneAPI.repo" <<EOF
+[oneAPI]
+name=Intel(R) oneAPI repository
+baseurl=https://yum.repos.intel.com/oneapi
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://yum.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
+EOF
+    tar czf "$OF" -C "$TMPDIR" .
+    rm -rf "$TMPDIR"
+}
+
+cmd_build() {
+    local TMPFILE="$(mktemp --suffix=.tar.gz)"
+    cmd_write_build_context "$TMPFILE"
+    docker build - -t "$IMAGE_NAME" < "$TMPFILE" 
+    rm -rf "$TMPFILE"
+}
+
+cmd_run() {
+    local BIND_OPTS=()
+    if [[ "${ENABLE_BIND_HOST_DIR}" == "yes" ]] ; then
+        local BIND_HOST_DIR_ABSOLUTE="$(readlink -fm "$BIND_HOST_DIR")"
+        BIND_OPTS=("--mount" "type=bind,source=${BIND_HOST_DIR_ABSOLUTE},target=/home/work")
+    fi
+    local HOSTNAME="$(hostname -s)-aoc-docker-image"
+    # --privileged es necesario para que el bind mount funcione con selinux activado
+    docker run --privileged "${BIND_OPTS[@]}" --hostname "$HOSTNAME" --init --interactive --tty --rm "$IMAGE_NAME" bash -l -ic "exec $(for i in "$@" ; do printf "%q " "$i" ; done)"
+}
+
+[[ $# -eq 0 ]] && { cmd_help ; exit 1 ; }
+
+docker --version > /dev/null || {
+    echo "Docker no parece estar instalado correctamente. Antes de ejecutar este script, instale Docker y compruebe que funciona (e.g., «docker run -it hello-word», posiblemente usando «sudo»)." ;
+    exit 1 ;
+}
+
+while [[ $# > 0 ]] ; do
+    if [[ "$1" = "--help" ]] ; then
+        cmd_help
+        exit 0
+    elif [[ "$1" =~ --write-dockerfile-and-context=.+ ]] ; then
+        OUTPUT_FILE="$(echo "$1" | cut -d= -f2-)"
+        cmd_write_build_context "$OUTPUT_FILE"
+        shift
+    elif [[ "$1" = "--write-dockerfile-and-context" ]] ; then
+        cmd_write_build_context "$IMAGE_NAME.build.tar.gz"
+        shift
+    elif [[ "$1" = "--build" ]] ; then
+        cmd_build
+        shift
+    elif [[ "$1" =~ --bind-host-dir=.+ ]] ; then
+        BIND_HOST_DIR="$(echo "$1" | cut -d= -f2-)"
+        shift
+    elif [[ "$1" = "--bind-host-dir-disable" ]] ; then
+        ENABLE_BIND_HOST_DIR=no
+        shift
+    elif [[ "$1" = "--" ]] ; then
+        shift
+        break
+    else
+        # La primera palabra no reconocida como una opción se considera la primera palabra del comando
+        break
+    fi
+done
+
+[[ $# -eq 0 ]] || { cmd_run "$@" ; }

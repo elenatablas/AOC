@@ -1,0 +1,44 @@
+#!/bin/bash
+
+SCRIPT_DIR="$(readlink -fm "$(dirname "$0")")"
+SCRIPT_COMMAND="$(basename "$0")"
+set -o nounset
+set -o pipefail
+set -o errexit
+trap 'echo "$SCRIPT_COMMAND: error $? at line $LINENO"' ERR
+
+HOST="$(hostname -s | sed 's/-aoc-docker-image$//')"
+OUTPUT_FILE="${OUTPUT_FILE:-benchmark-matrix.$HOST.$(date -I).tsv}"
+
+[ -e "$OUTPUT_FILE" ] && { echo "«$OUTPUT_FILE» already exists and will not be overwritten. Remove it or use another name." >&2 ; exit 1 ; }
+
+REMAKE="${REMAKE:-yes}"
+
+if [[ "$REMAKE" == "yes" ]] ; then
+    pushd "$SCRIPT_DIR" &> /dev/null
+    make clean
+    make all
+    popd &> /dev/null
+fi
+
+VERSIONS_TESTS="gcc clang icc"
+IMPLEMENTATIONS_TESTS="basic ikj basic_omp ikj_omp blas"
+#SIZES_TESTS="500 750 1000 1250 1500 1750 2000 2048 2250 2500 2750 3000 4000 4096 5000" # 2048 y 4096 obtienen resultados muy malos…
+#SIZES_TESTS="750 1000 1250 1500 1750 2000 2250 2500 2750 3000 4000 5000"
+SIZES_TESTS="1000 2000 4000"
+
+printf 'compiler\timplementation\tsize\tGFLOPS\tGFLOPS_err\n' > "$OUTPUT_FILE"
+
+for v in $VERSIONS_TESTS ; do
+    for i in $IMPLEMENTATIONS_TESTS ; do
+        for s in $SIZES_TESTS ; do
+            echo "Testing $s × $s, compiler $v, implementation $i"
+            stdbuf -oL "$SCRIPT_DIR"/matrix-$v --square-size=$s --implementation=$i "$@" | tee /dev/tty | grep -e '^Average time (s):' | tr -s " " | while read l ; do
+                GFLOPS="$(echo "$l" | cut -d " " -f6 | cut -d± -f1)"
+                GFLOPS_err="$(echo "$l" | cut -d " " -f6 | cut -d± -f2)"
+                printf "%s\t%s\t%s\t%s\t%s\n" "$v" "$i" "$s" "$GFLOPS" "$GFLOPS_err"
+            done >> "${OUTPUT_FILE}"
+        done 
+    done
+done
+    

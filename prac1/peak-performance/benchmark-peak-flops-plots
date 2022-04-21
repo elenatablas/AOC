@@ -1,0 +1,87 @@
+#!/bin/bash
+
+SCRIPT_DIR="$(readlink -fm "$(dirname "$0")")"
+SCRIPT_COMMAND="$(basename "$0")"
+set -o nounset
+set -o pipefail
+set -o errexit
+trap 'echo "$SCRIPT_COMMAND: error $? at line $LINENO"' ERR
+
+[[ $# -eq 0 ]] && {
+    echo "Uso $0 fichero_de_entrada [directorio_de_salida]"
+    echo "fichero_de_entrada debe ser un fichero tsv en el formato generado por el script benchmark-peak-flops"
+    exit 1
+}
+
+INPUT="$1"
+OUTDIR="${2:-$(basename "$INPUT".plots)}"
+
+col() {
+    cut -f"$1"
+}
+
+all_rows() {
+    tail -n+2 "${INPUT}"
+}
+
+TAB="$(printf '\t')"
+
+filter_thread() {
+    egrep "^[^$TAB]+$TAB${1}$TAB" || true
+}
+
+filter_compiler() {
+    egrep "^${1}$TAB" || true
+}
+
+ALL_THREADS="$(all_rows | col 2 | sort -n -u)"
+ALL_COMPILERS="$(all_rows | col 1 | sort -u)"
+
+CREATED_DATA_FILES=() # to remove them at the end
+
+mkdir "${OUTDIR}"
+
+for t in $ALL_THREADS ; do
+    TMPFILE="$(mktemp)"
+    echo "set terminal pdfcairo size 15cm,10cm" >> "$TMPFILE"
+    echo "set output \"${OUTDIR}/compiler-inner_iterations-threads=$t.pdf\""  >> "$TMPFILE"
+    echo "set logscale x 2"  >> "$TMPFILE"
+    echo "set title 'GFLOPS with $t threads varying inner\_iterations'"  >> "$TMPFILE"
+    echo "set xlabel 'inner\_iterations'"  >> "$TMPFILE"
+    echo "set ylabel 'GFLOPS'"  >> "$TMPFILE"
+    echo "set yrange [0:*]"  >> "$TMPFILE"
+    echo -n "plot " >> "$TMPFILE"
+    for c in $ALL_COMPILERS ; do
+        DATA_FILE="${OUTDIR}/threads=$t,compiler=$c.dat"
+        all_rows | filter_thread $t | filter_compiler $c > "$DATA_FILE"
+        CREATED_DATA_FILES+=("$DATA_FILE")
+        echo -n "'$DATA_FILE' using 3:4:5:xtic(3):xticlabels(3) with yerrorlines pointtype 0 title '$c'," >> "$TMPFILE"
+    done
+    echo ""  >> "$TMPFILE"
+    gnuplot "$TMPFILE"
+    rm "$TMPFILE"
+done
+
+TMPFILE="$(mktemp)"
+echo "set terminal pdfcairo size 15cm,10cm" >> "$TMPFILE"
+echo "set output \"${OUTDIR}/compiler_best.pdf\""  >> "$TMPFILE"
+echo "set title 'GFLOPS varying threads (best inner\_iterations for each compiler)'"  >> "$TMPFILE"
+echo "set xlabel 'threads'"  >> "$TMPFILE"
+echo "set ylabel 'GFLOPS'"  >> "$TMPFILE"
+echo "set yrange [0:*]"  >> "$TMPFILE"
+echo -n "plot " >> "$TMPFILE"
+for c in $ALL_COMPILERS ; do
+    DATA_FILE="${OUTDIR}/compiler=${c}_best.dat"
+    truncate --size 0 "$DATA_FILE"
+    for t in $ALL_THREADS ; do
+        all_rows | filter_thread $t | filter_compiler $c | sort -k4n | tail -n1 >> "$DATA_FILE"
+    done
+    CREATED_DATA_FILES+=("$DATA_FILE")
+    echo -n "'$DATA_FILE' using 2:4:5:xtic(2):xticlabels(2) with yerrorlines pointtype 0 title '$c'," >> "$TMPFILE"
+    echo -n "          '' using 2:4:(sprintf('(%d)', column(3))):xtic(2):xticlabels(2) with labels offset 0,-0.5 font 'sans,8' title ''," >> "$TMPFILE"
+done
+echo ""  >> "$TMPFILE"
+gnuplot "$TMPFILE"
+rm "$TMPFILE"
+
+rm "${CREATED_DATA_FILES[@]}"

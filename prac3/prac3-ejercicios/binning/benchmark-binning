@@ -1,0 +1,60 @@
+#!/bin/bash
+
+SCRIPT_DIR="$(readlink -f "$(dirname "$0")")"
+SCRIPT_COMMAND="$(basename "$0")"
+set -o nounset
+set -o pipefail
+set -o errexit
+trap 'echo "$SCRIPT_COMMAND: error $? at line $LINENO"' ERR
+
+HOST="$(hostname -s | sed 's/-aoc-docker-image$//')"
+OUTPUT_FILE="${OUTPUT_FILE:-benchmark-binning.$HOST.$(date -I).tsv}"
+
+[ -e "$OUTPUT_FILE" ] && { echo "«$OUTPUT_FILE» already exists and will not be overwritten. Remove it or use another name." >&2 ; exit 1 ; }
+
+VERSIONS_TESTS=(gcc clang icc)
+IMPLEMENTATIONS_DIRS=($(find "${SCRIPT_DIR}/solutions/" -mindepth 2 -maxdepth 2 -type f -name binning.cpp -printf '%h\n' | sort) )
+REFERENCE_IMPLEMENTATION_DIR="${REFERENCE_IMPLEMENTATION_DIR:-${SCRIPT_DIR}/00-reference}"
+SEED="${SEED:-41}"
+
+REMAKE="${REMAKE:-yes}"
+
+for d in "$REFERENCE_IMPLEMENTATION_DIR" "${IMPLEMENTATIONS_DIRS[@]}" ; do
+    if [[ "$REMAKE" == "yes" ]] ; then
+        pushd "$d" &> /dev/null
+        echo "$(basename "$d")"
+        make clean
+        make all
+        popd &> /dev/null
+    fi
+done
+
+if [ -z "${REFERENCE_RESULTS:-}" ] ; then
+    GENERATE_REFERENCE_RESULTS="${GENERATE_REFERENCE_RESULTS:-yes}"
+    REFERENCE_RESULTS="${SCRIPT_DIR}/binning-reference-results"
+else
+    GENERATE_REFERENCE_RESULTS="${GENERATE_REFERENCE_RESULTS:-no}"
+fi
+
+if [[ "$GENERATE_REFERENCE_RESULTS" == "yes" ]] ; then
+    echo "Using ${REFERENCE_IMPLEMENTATION_DIR} as reference for correctness"
+    "$REFERENCE_IMPLEMENTATION_DIR"/binning-gcc --seed="$SEED" --write-result-file="$REFERENCE_RESULTS" --repeat-times=1 > /dev/null
+    echo "Reference results saved in ${REFERENCE_RESULTS}"
+fi
+
+printf 'compiler\timplementation\ttime\ttime_err\tGP/s\tGP/s_err\n' > "$OUTPUT_FILE"
+
+for v in "${VERSIONS_TESTS[@]}" ; do
+    for id in "$REFERENCE_IMPLEMENTATION_DIR" "${IMPLEMENTATIONS_DIRS[@]}" ; do
+        i="$(basename "$id")"
+        echo "Testing implementation $i with compiler $v"
+        stdbuf -oL "$id"/binning-$v --seed="$SEED" --check-result-file="${REFERENCE_RESULTS}" | tee /dev/tty | grep -e 'Average time (s):' | tr -s " " | while read l ; do
+            TIME="$(echo "$l" | cut -d " " -f4 | cut -d± -f1)"
+            TIME_err="$(echo "$l" | cut -d " " -f4 | cut -d± -f2)"
+            GPS="$(echo "$l" | cut -d " " -f6 | cut -d± -f1)"
+            GPS_err="$(echo "$l" | cut -d " " -f6 | cut -d± -f2)"
+            printf "%s\t%s\t%s\t%s\t%s\t%s\n" "$v" "$i" "$TIME" "$TIME_err" "$GPS" "$GPS_err"
+        done >> "${OUTPUT_FILE}"
+    done
+done
+    

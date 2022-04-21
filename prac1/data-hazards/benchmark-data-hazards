@@ -1,0 +1,38 @@
+#!/bin/bash
+
+SCRIPT_DIR="$(readlink -fm "$(dirname "$0")")"
+SCRIPT_COMMAND="$(basename "$0")"
+set -o nounset
+set -o pipefail
+set -o errexit
+trap 'echo "$SCRIPT_COMMAND: error $? at line $LINENO"' ERR
+
+HOST="$(hostname -s | sed 's/-aoc-docker-image$//')"
+OUTPUT_FILE="${OUTPUT_FILE:-benchmark-data-hazards.$HOST.$(date -I).tsv}"
+
+[ -e "$OUTPUT_FILE" ] && { echo "«$OUTPUT_FILE» already exists and will not be overwritten. Remove it or use another name." >&2 ; exit 1 ; }
+
+REMAKE="${REMAKE:-yes}"
+
+if [[ "$REMAKE" == "yes" ]] ; then
+    pushd "$SCRIPT_DIR" &> /dev/null
+    make clean
+    make all
+    popd &> /dev/null
+fi
+
+VERSIONS_TESTS="gcc clang icc"
+
+printf 'compiler\tnum_vars\ttime\ttime_err\tGFLOPS\tGFLOPS_err\n' > "$OUTPUT_FILE"
+
+for v in $VERSIONS_TESTS ; do
+    echo "Testing with $v"
+    stdbuf -oL "$SCRIPT_DIR"/data-hazards-$v "$@" | tee /dev/tty | grep -e '^Average time (s):' | tr -s " " | while read l ; do
+        num_vars="$(echo "$l" | cut -d " " -f9)" 
+        time="$(echo "$l" | cut -d " " -f4 | cut -d± -f1)"
+        time_err="$(echo "$l" | cut -d " " -f4 | cut -d± -f2)"
+        GFLOPS="$(echo "$l" | cut -d " " -f6 | cut -d± -f1)"
+        GFLOPS_err="$(echo "$l" | cut -d " " -f6 | cut -d± -f2)"
+        printf "%s\t%s\t%s\t%s\t%s\t%s\n" "$v" "$num_vars" "$time" "$time_err" "$GFLOPS" "$GFLOPS_err"
+    done >> "${OUTPUT_FILE}"
+done
