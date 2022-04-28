@@ -1,0 +1,51 @@
+\subsubsection{\textbf{2ºBucle:}}
+\begin{listing}[firstnumber=21]
+    @@ -22,4 +22,4 @@
+    for (int i = 0; i < arrays_size - 1; ++i) {
+      A[i] = A[i] - B[i];
+      B[i + 1] = C[i] * 2;
+    }
+\end{listing}
+\par Analizando la ejecución desarrollada del bucle se pueden ver las dependencias:
+\begin{listing}[numbers=none]
+    // Dentro del bucle
+    A[0] = A[0] - B[0];
+    B[1] = C[0] * 2;
+
+    A[1] = A[1] - B[1];
+    B[2] = C[1] * 2;
+
+            ...
+
+    A[arrays_size-1] = A[arrays_size-1] - B[arrays_size-1];
+    B[arrays_size] = C[arrays_size-1] * 2; 
+\end{listing}
+\par En este bucle se producen dependencias \textbf{RAW} porque en la línea 23 se quiere calcular \texttt{A[i]}, pero depende del valor \texttt{B[i]} obtenido
+en la anterior iteración. Este caso es mucho más sencillo, la dependencia no afectaría a la vectorización porque el compilador lo
+resolvería reordenando las instrucciones, internamente en código ensamblador, el bucle se transformaría en el siguiente código
+para eliminar la dependencia.
+\begin{listing}[numbers=none]
+    // Fuera del bucle
+    A[0] = A[0] - B[0];
+    // Dentro del bucle
+    B[1] = C[0] * 2;
+    A[1] = A[1] - B[1];
+
+    B[2] = C[1] * 2;
+    A[2] = A[2] - B[2];
+
+            ...
+    B[arrays_size-1] = C[arrays_size-2] * 2;
+    A[arrays_size-1] = A[arrays_size-1] - B[arrays_size-1];
+    //Fuera del bucle
+    B[arrays_size] = C[arrays_size-1] * 2; 
+\end{listing}
+\begin{listing}[firstnumber=21]
+    @@ -22,4 +22,6 @@
+    + A[0] = A[0] - B[0];
+    + for (int i = 0; i < arrays_size - 2; ++i) {
+    +    B[i + 1] = C[i] * 2;
+    +    A[i] = A[i] - B[i];
+    }
+    + B[arrays_size] = C[arrays_size-1] * 2;
+\end{listing}

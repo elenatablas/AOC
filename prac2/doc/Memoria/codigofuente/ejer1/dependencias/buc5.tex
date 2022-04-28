@@ -1,0 +1,11 @@
+\subsubsection{\textbf{5ºBucle:}}
+\begin{listing}[firstnumber=35]
+    @@ -36,3 +36,3 @@
+    for (int i = 0; i < arrays_size; ++i) {
+      total = total + C[i];
+    }
+\end{listing}
+\par No hace falta analizar la ejecución desarrollada del bucle, porque mirando el código se puede decir a simple vista que hay una
+\textbf{dependencia entre iteraciones}, puesto que en cada iteración se necesita obtener el valor total de la iteración anterior. Como este bucle
+está siempre modificando la misma variable de la misma manera, el compilador puede vectorizar automáticamente este bucle
+haciendo varias sumas parciales por cada iteración.

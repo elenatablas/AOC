@@ -1,0 +1,10 @@
+\subsubsection{\textbf{4ºBucle:}}
+\begin{listing}[firstnumber=31]
+    @@ -32,3 +32,3 @@
+    for (int i = 0; i < arrays_size; ++i) {
+      C[i] = A[i] + 2 * B[i];
+    }
+\end{listing}
+\par No hace falta analizar la ejecución desarrollada del bucle porque mirando el código se puede decir a simple vista que no hay
+\textbf{ninguna dependencia} entre iteraciones, porque en cada iteración solo se necesita los valores que se leen y procesan en ella misma.
+El compilador podrá vectorizar automáticamente este bucle sin ninguna modificación.
