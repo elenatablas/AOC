@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# \LaTeX
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.gz
+*.toc
+prac3.pdf
