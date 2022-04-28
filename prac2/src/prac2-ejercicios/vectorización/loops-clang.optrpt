@@ -1,0 +1,2662 @@
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/ostream', 
+                   Line: 221, Column: 16 }
+Function:        _ZNSolsEd
+Args:
+  - Callee:          _ZNSo9_M_insertIdEERSoT_
+  - String:          ' will not be inlined into '
+  - Caller:          _ZNSolsEd
+    DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/ostream', 
+                       Line: 221, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: loops.cpp, Line: 42, Column: 8 }
+Function:        main
+Args:
+  - Callee:          _ZNSolsEd
+    DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/ostream', 
+                       Line: 221, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          main
+    DebugLoc:        { File: loops.cpp, Line: 12, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '0'
+  - String:          ', threshold='
+  - Threshold:       '375'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          main
+  - String:          ':'
+  - Line:            '30'
+  - String:          ':'
+  - Column:          '8'
+  - String:          ';'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: loops.cpp, Line: 42, Column: 17 }
+Function:        main
+Args:
+  - Callee:          _ZNSolsEPFRSoS_E
+    DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/ostream', 
+                       Line: 109, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          main
+    DebugLoc:        { File: loops.cpp, Line: 12, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-427'
+  - String:          ', threshold='
+  - Threshold:       '375'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          main
+  - String:          ':'
+  - Line:            '30'
+  - String:          ':'
+  - Column:          '17'
+  - String:          ';'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/ostream', 
+                   Line: 113, Column: 9 }
+Function:        main
+Args:
+  - Callee:          _ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+    DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/ostream', 
+                       Line: 682, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          main
+    DebugLoc:        { File: loops.cpp, Line: 12, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '90'
+  - String:          ', threshold='
+  - Threshold:       '487'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          _ZNSolsEPFRSoS_E
+  - String:          ':'
+  - Line:            '5'
+  - String:          ':'
+  - Column:          '9'
+  - String:          ' @ '
+  - String:          main
+  - String:          ':'
+  - Line:            '30'
+  - String:          ':'
+  - Column:          '17'
+  - String:          ';'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/ostream', 
+                   Line: 682, Column: 14 }
+Function:        main
+Args:
+  - Callee:          _ZSt5flushIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+    DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/ostream', 
+                       Line: 704, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          main
+    DebugLoc:        { File: loops.cpp, Line: 12, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '0'
+  - String:          ', threshold='
+  - Threshold:       '487'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          _ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+  - String:          ':'
+  - Line:            '1'
+  - String:          ':'
+  - Column:          '14'
+  - String:          ' @ '
+  - String:          _ZNSolsEPFRSoS_E
+  - String:          ':'
+  - Line:            '5'
+  - String:          ':'
+  - Column:          '9'
+  - String:          ' @ '
+  - String:          main
+  - String:          ':'
+  - Line:            '30'
+  - String:          ':'
+  - Column:          '17'
+  - String:          ';'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/ostream', 
+                   Line: 682, Column: 34 }
+Function:        main
+Args:
+  - Callee:          _ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc
+    DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/basic_ios.h', 
+                       Line: 450, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          main
+    DebugLoc:        { File: loops.cpp, Line: 12, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '40'
+  - String:          ', threshold='
+  - Threshold:       '375'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          _ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+  - String:          ':'
+  - Line:            '1'
+  - String:          ':'
+  - Column:          '34'
+  - String:          ' @ '
+  - String:          _ZNSolsEPFRSoS_E
+  - String:          ':'
+  - Line:            '5'
+  - String:          ':'
+  - Column:          '9'
+  - String:          ' @ '
+  - String:          main
+  - String:          ':'
+  - Line:            '30'
+  - String:          ':'
+  - Column:          '17'
+  - String:          ';'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/basic_ios.h', 
+                   Line: 450, Column: 40 }
+Function:        main
+Args:
+  - Callee:          _ZNKSt5ctypeIcE5widenEc
+    DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/locale_facets.h', 
+                       Line: 876, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          main
+    DebugLoc:        { File: loops.cpp, Line: 12, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '40'
+  - String:          ', threshold='
+  - Threshold:       '250'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          _ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc
+  - String:          ':'
+  - Line:            '1'
+  - String:          ':'
+  - Column:          '40'
+  - String:          ' @ '
+  - String:          _ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+  - String:          ':'
+  - Line:            '1'
+  - String:          ':'
+  - Column:          '34'
+  - String:          ' @ '
+  - String:          _ZNSolsEPFRSoS_E
+  - String:          ':'
+  - Line:            '5'
+  - String:          ':'
+  - Column:          '9'
+  - String:          ' @ '
+  - String:          main
+  - String:          ':'
+  - Line:            '30'
+  - String:          ':'
+  - Column:          '17'
+  - String:          ';'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/basic_ios.h', 
+                   Line: 450, Column: 16 }
+Function:        main
+Args:
+  - Callee:          _ZSt13__check_facetISt5ctypeIcEERKT_PS3_
+    DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/basic_ios.h', 
+                       Line: 48, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          main
+    DebugLoc:        { File: loops.cpp, Line: 12, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '5'
+  - String:          ', threshold='
+  - Threshold:       '325'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          _ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc
+  - String:          ':'
+  - Line:            '1'
+  - String:          ':'
+  - Column:          '16'
+  - String:          ' @ '
+  - String:          _ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+  - String:          ':'
+  - Line:            '1'
+  - String:          ':'
+  - Column:          '34'
+  - String:          ' @ '
+  - String:          _ZNSolsEPFRSoS_E
+  - String:          ':'
+  - Line:            '5'
+  - String:          ':'
+  - Column:          '9'
+  - String:          ' @ '
+  - String:          main
+  - String:          ':'
+  - Line:            '30'
+  - String:          ':'
+  - Column:          '17'
+  - String:          ';'
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 19, Column: 7 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 19, Column: 7 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 19, Column: 7 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            zext
+    DebugLoc:        { File: loops.cpp, Line: 19, Column: 7 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 19, Column: 25 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 19, Column: 25 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 18, Column: 7 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 18, Column: 7 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 18, Column: 7 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            zext
+    DebugLoc:        { File: loops.cpp, Line: 18, Column: 7 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 24, Column: 7 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 24, Column: 7 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 24, Column: 7 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            zext
+    DebugLoc:        { File: loops.cpp, Line: 24, Column: 7 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 24, Column: 18 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 24, Column: 18 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 23, Column: 21 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 23, Column: 21 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 23, Column: 14 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 23, Column: 14 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 23, Column: 14 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            zext
+    DebugLoc:        { File: loops.cpp, Line: 23, Column: 14 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 29, Column: 21 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 29, Column: 21 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 28, Column: 7 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 28, Column: 7 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            zext
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 28, Column: 25 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 28, Column: 25 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 28, Column: 18 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 28, Column: 18 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 28, Column: 18 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            zext
+    DebugLoc:        { File: loops.cpp, Line: 28, Column: 18 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 33, Column: 7 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 33, Column: 7 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 33, Column: 25 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 33, Column: 25 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 33, Column: 14 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 33, Column: 14 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 33, Column: 14 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            zext
+    DebugLoc:        { File: loops.cpp, Line: 33, Column: 14 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            zext
+    DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: loops.cpp, Line: 19, Column: 25 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     store
+    DebugLoc:        { File: loops.cpp, Line: 29, Column: 12 }
+...
+--- !Passed
+Pass:            gvn
+Name:            LoadPRE
+DebugLoc:        { File: loops.cpp, Line: 19, Column: 25 }
+Function:        main
+Args:
+  - String:          load eliminated by PRE
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: loops.cpp, Line: 23, Column: 14 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     store
+    DebugLoc:        { File: loops.cpp, Line: 18, Column: 12 }
+...
+--- !Passed
+Pass:            gvn
+Name:            LoadElim
+DebugLoc:        { File: loops.cpp, Line: 23, Column: 21 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' eliminated'
+  - String:          ' in favor of '
+  - InfavorOfValue:  phi
+    DebugLoc:        { File: loops.cpp, Line: 23, Column: 21 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: loops.cpp, Line: 24, Column: 18 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     store
+    DebugLoc:        { File: loops.cpp, Line: 33, Column: 12 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: loops.cpp, Line: 28, Column: 18 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     store
+    DebugLoc:        { File: loops.cpp, Line: 23, Column: 12 }
+...
+--- !Passed
+Pass:            gvn
+Name:            LoadPRE
+DebugLoc:        { File: loops.cpp, Line: 28, Column: 18 }
+Function:        main
+Args:
+  - String:          load eliminated by PRE
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: loops.cpp, Line: 28, Column: 25 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     store
+    DebugLoc:        { File: loops.cpp, Line: 33, Column: 12 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: loops.cpp, Line: 29, Column: 21 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     store
+    DebugLoc:        { File: loops.cpp, Line: 24, Column: 16 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: loops.cpp, Line: 33, Column: 14 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     store
+    DebugLoc:        { File: loops.cpp, Line: 28, Column: 16 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: loops.cpp, Line: 33, Column: 25 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     store
+    DebugLoc:        { File: loops.cpp, Line: 29, Column: 12 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     store
+    DebugLoc:        { File: loops.cpp, Line: 33, Column: 12 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/ostream', 
+                   Line: 682, Column: 29 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            'i8*'
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/ostream', 
+                       Line: 221, Column: 16 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/ostream', 
+                   Line: 682, Column: 29 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            i64
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/ostream', 
+                       Line: 221, Column: 16 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/basic_ios.h', 
+                   Line: 450, Column: 30 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            '%"class.std::ctype"*'
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/ostream', 
+                       Line: 221, Column: 16 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/locale_facets.h', 
+                   Line: 877, Column: 6 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            i8
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/ostream', 
+                       Line: 221, Column: 16 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/locale_facets.h', 
+                   Line: 878, Column: 11 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            i8
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/ostream', 
+                       Line: 221, Column: 16 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/locale_facets.h', 
+                   Line: 880, Column: 15 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            'i8 (%"class.std::ctype"*, i8)**'
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/locale_facets.h', 
+                       Line: 879, Column: 8 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/locale_facets.h', 
+                   Line: 880, Column: 15 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            'i8 (%"class.std::ctype"*, i8)*'
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/locale_facets.h', 
+                       Line: 879, Column: 8 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: loops.cpp, Line: 19, Column: 25 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     store
+    DebugLoc:        { File: loops.cpp, Line: 29, Column: 12 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: loops.cpp, Line: 23, Column: 14 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     store
+    DebugLoc:        { File: loops.cpp, Line: 18, Column: 12 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: loops.cpp, Line: 24, Column: 18 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     store
+    DebugLoc:        { File: loops.cpp, Line: 33, Column: 12 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: loops.cpp, Line: 28, Column: 18 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     store
+    DebugLoc:        { File: loops.cpp, Line: 23, Column: 12 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: loops.cpp, Line: 28, Column: 25 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     store
+    DebugLoc:        { File: loops.cpp, Line: 33, Column: 12 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: loops.cpp, Line: 29, Column: 21 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     store
+    DebugLoc:        { File: loops.cpp, Line: 24, Column: 16 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: loops.cpp, Line: 33, Column: 14 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     store
+    DebugLoc:        { File: loops.cpp, Line: 28, Column: 16 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: loops.cpp, Line: 33, Column: 25 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     store
+    DebugLoc:        { File: loops.cpp, Line: 29, Column: 12 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     store
+    DebugLoc:        { File: loops.cpp, Line: 33, Column: 12 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/ostream', 
+                   Line: 682, Column: 29 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            'i8*'
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/ostream', 
+                       Line: 221, Column: 16 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/ostream', 
+                   Line: 682, Column: 29 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            i64
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/ostream', 
+                       Line: 221, Column: 16 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/basic_ios.h', 
+                   Line: 450, Column: 30 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            '%"class.std::ctype"*'
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/ostream', 
+                       Line: 221, Column: 16 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/locale_facets.h', 
+                   Line: 877, Column: 6 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            i8
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/ostream', 
+                       Line: 221, Column: 16 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/locale_facets.h', 
+                   Line: 878, Column: 11 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            i8
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/ostream', 
+                       Line: 221, Column: 16 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/locale_facets.h', 
+                   Line: 880, Column: 15 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            'i8 (%"class.std::ctype"*, i8)**'
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/locale_facets.h', 
+                       Line: 879, Column: 8 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/locale_facets.h', 
+                   Line: 880, Column: 15 }
+Function:        main
+Args:
+  - String:          'load of type '
+  - Type:            'i8 (%"class.std::ctype"*, i8)*'
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/locale_facets.h', 
+                       Line: 879, Column: 8 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 19, Column: 7 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 19, Column: 7 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 18, Column: 7 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 18, Column: 7 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 18, Column: 20 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            trunc
+    DebugLoc:        { File: loops.cpp, Line: 18, Column: 20 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 24, Column: 7 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 24, Column: 7 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 24, Column: 18 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 24, Column: 18 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 23, Column: 14 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 23, Column: 14 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 29, Column: 21 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 29, Column: 21 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 28, Column: 7 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 28, Column: 7 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 28, Column: 25 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 28, Column: 25 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 33, Column: 7 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 33, Column: 7 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 33, Column: 25 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 33, Column: 25 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 33, Column: 14 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 33, Column: 14 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+...
+--- !Missed
+Pass:            licm
+Name:            LoadWithLoopInvariantAddressInvalidated
+DebugLoc:        { File: loops.cpp, Line: 19, Column: 25 }
+Function:        main
+Args:
+  - String:          failed to move load with loop-invariant address because the loop may invalidate its value
+...
+--- !Missed
+Pass:            licm
+Name:            LoadWithLoopInvariantAddressInvalidated
+DebugLoc:        { File: loops.cpp, Line: 28, Column: 18 }
+Function:        main
+Args:
+  - String:          failed to move load with loop-invariant address because the loop may invalidate its value
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/basic_ios.h', 
+                   Line: 50, Column: 2 }
+Function:        _ZSt13__check_facetISt5ctypeIcEERKT_PS3_
+Args:
+  - Callee:          _ZSt16__throw_bad_castv
+  - String:          ' will not be inlined into '
+  - Caller:          _ZSt13__check_facetISt5ctypeIcEERKT_PS3_
+    DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/basic_ios.h', 
+                       Line: 48, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/locale_facets.h', 
+                   Line: 879, Column: 8 }
+Function:        _ZNKSt5ctypeIcE5widenEc
+Args:
+  - Callee:          _ZNKSt5ctypeIcE13_M_widen_initEv
+  - String:          ' will not be inlined into '
+  - Caller:          _ZNKSt5ctypeIcE5widenEc
+    DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/locale_facets.h', 
+                       Line: 876, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/locale_facets.h', 
+                   Line: 880, Column: 15 }
+Function:        _ZNKSt5ctypeIcE5widenEc
+Args:
+  - String:          'load of type '
+  - Type:            'i8 (%"class.std::ctype"*, i8)**'
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/locale_facets.h', 
+                       Line: 879, Column: 8 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/locale_facets.h', 
+                   Line: 880, Column: 15 }
+Function:        _ZNKSt5ctypeIcE5widenEc
+Args:
+  - String:          'load of type '
+  - Type:            'i8 (%"class.std::ctype"*, i8)*'
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/locale_facets.h', 
+                       Line: 879, Column: 8 }
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/basic_ios.h', 
+                   Line: 450, Column: 16 }
+Function:        _ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc
+Args:
+  - Callee:          _ZSt13__check_facetISt5ctypeIcEERKT_PS3_
+    DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/basic_ios.h', 
+                       Line: 48, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc
+    DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/basic_ios.h', 
+                       Line: 450, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '5'
+  - String:          ', threshold='
+  - Threshold:       '325'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          _ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc
+  - String:          ':'
+  - Line:            '1'
+  - String:          ':'
+  - Column:          '16'
+  - String:          ';'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/basic_ios.h', 
+                   Line: 450, Column: 40 }
+Function:        _ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc
+Args:
+  - Callee:          _ZNKSt5ctypeIcE5widenEc
+    DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/locale_facets.h', 
+                       Line: 876, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc
+    DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/basic_ios.h', 
+                       Line: 450, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '45'
+  - String:          ', threshold='
+  - Threshold:       '250'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          _ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc
+  - String:          ':'
+  - Line:            '1'
+  - String:          ':'
+  - Column:          '40'
+  - String:          ';'
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/locale_facets.h', 
+                   Line: 880, Column: 15 }
+Function:        _ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc
+Args:
+  - String:          'load of type '
+  - Type:            'i8 (%"class.std::ctype"*, i8)**'
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/locale_facets.h', 
+                       Line: 879, Column: 8 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/locale_facets.h', 
+                   Line: 880, Column: 15 }
+Function:        _ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc
+Args:
+  - String:          'load of type '
+  - Type:            'i8 (%"class.std::ctype"*, i8)*'
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/locale_facets.h', 
+                       Line: 879, Column: 8 }
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/ostream', 
+                   Line: 704, Column: 19 }
+Function:        _ZSt5flushIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+Args:
+  - Callee:          _ZNSo5flushEv
+  - String:          ' will not be inlined into '
+  - Caller:          _ZSt5flushIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+    DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/ostream', 
+                       Line: 704, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/ostream', 
+                   Line: 682, Column: 25 }
+Function:        _ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+Args:
+  - Callee:          _ZNSo3putEc
+  - String:          ' will not be inlined into '
+  - Caller:          _ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+    DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/ostream', 
+                       Line: 682, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/ostream', 
+                   Line: 682, Column: 34 }
+Function:        _ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+Args:
+  - Callee:          _ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc
+    DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/basic_ios.h', 
+                       Line: 450, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+    DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/ostream', 
+                       Line: 682, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '85'
+  - String:          ', threshold='
+  - Threshold:       '250'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          _ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+  - String:          ':'
+  - Line:            '1'
+  - String:          ':'
+  - Column:          '34'
+  - String:          ';'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/ostream', 
+                   Line: 682, Column: 14 }
+Function:        _ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+Args:
+  - Callee:          _ZSt5flushIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+    DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/ostream', 
+                       Line: 704, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+    DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/ostream', 
+                       Line: 682, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '0'
+  - String:          ', threshold='
+  - Threshold:       '487'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          _ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+  - String:          ':'
+  - Line:            '1'
+  - String:          ':'
+  - Column:          '14'
+  - String:          ';'
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/locale_facets.h', 
+                   Line: 880, Column: 15 }
+Function:        _ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+Args:
+  - String:          'load of type '
+  - Type:            'i8 (%"class.std::ctype"*, i8)**'
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/locale_facets.h', 
+                       Line: 879, Column: 8 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/locale_facets.h', 
+                   Line: 880, Column: 15 }
+Function:        _ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+Args:
+  - String:          'load of type '
+  - Type:            'i8 (%"class.std::ctype"*, i8)*'
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/locale_facets.h', 
+                       Line: 879, Column: 8 }
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/iostream', 
+                   Line: 74, Column: 25 }
+Function:        __cxx_global_var_init
+Args:
+  - Callee:          _ZNSt8ios_base4InitC1Ev
+  - String:          ' will not be inlined into '
+  - Caller:          __cxx_global_var_init
+    DebugLoc:        { File: loops.cpp, Line: 0, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: loops.cpp, Line: 0, Column: 0 }
+Function:        __cxx_global_var_init
+Args:
+  - Callee:          __cxa_atexit
+  - String:          ' will not be inlined into '
+  - Caller:          __cxx_global_var_init
+    DebugLoc:        { File: loops.cpp, Line: 0, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: loops.cpp, Line: 0, Column: 0 }
+Function:        _GLOBAL__sub_I_loops.cpp
+Args:
+  - Callee:          __cxx_global_var_init
+    DebugLoc:        { File: loops.cpp, Line: 0, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _GLOBAL__sub_I_loops.cpp
+    DebugLoc:        { File: loops.cpp, Line: 0, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-14950'
+  - String:          ', threshold='
+  - Threshold:       '375'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          _GLOBAL__sub_I_loops.cpp
+  - String:          ':'
+  - Line:            '0'
+  - String:          ':'
+  - Column:          '0'
+  - String:          ';'
+...
+--- !Passed
+Pass:            loop-vectorize
+Name:            Vectorized
+DebugLoc:        { File: loops.cpp, Line: 36, Column: 5 }
+Function:        main
+Args:
+  - String:          'vectorized loop (vectorization width: '
+  - VectorizationFactor: '4'
+  - String:          ', interleaved count: '
+  - InterleaveCount: '4'
+  - String:          ')'
+...
+--- !Passed
+Pass:            loop-vectorize
+Name:            Vectorized
+DebugLoc:        { File: loops.cpp, Line: 32, Column: 5 }
+Function:        main
+Args:
+  - String:          'vectorized loop (vectorization width: '
+  - VectorizationFactor: '4'
+  - String:          ', interleaved count: '
+  - InterleaveCount: '4'
+  - String:          ')'
+...
+--- !Analysis
+Pass:            loop-vectorize
+Name:            NonReductionValueUsedOutsideLoop
+DebugLoc:        { File: loops.cpp, Line: 28, Column: 18 }
+Function:        main
+Args:
+  - String:          'loop not vectorized: '
+  - String:          value that could not be identified as reduction is used outside the loop
+...
+--- !Missed
+Pass:            loop-vectorize
+Name:            MissedDetails
+DebugLoc:        { File: loops.cpp, Line: 27, Column: 5 }
+Function:        main
+Args:
+  - String:          loop not vectorized
+...
+--- !Analysis
+Pass:            loop-vectorize
+Name:            NonReductionValueUsedOutsideLoop
+DebugLoc:        { File: loops.cpp, Line: 23, Column: 21 }
+Function:        main
+Args:
+  - String:          'loop not vectorized: '
+  - String:          value that could not be identified as reduction is used outside the loop
+...
+--- !Missed
+Pass:            loop-vectorize
+Name:            MissedDetails
+DebugLoc:        { File: loops.cpp, Line: 22, Column: 5 }
+Function:        main
+Args:
+  - String:          loop not vectorized
+...
+--- !Analysis
+Pass:            loop-vectorize
+Name:            NonReductionValueUsedOutsideLoop
+DebugLoc:        { File: loops.cpp, Line: 19, Column: 25 }
+Function:        main
+Args:
+  - String:          'loop not vectorized: '
+  - String:          value that could not be identified as reduction is used outside the loop
+...
+--- !Missed
+Pass:            loop-vectorize
+Name:            MissedDetails
+DebugLoc:        { File: loops.cpp, Line: 17, Column: 5 }
+Function:        main
+Args:
+  - String:          loop not vectorized
+...
+--- !Missed
+Pass:            slp-vectorizer
+Name:            UnsupportedType
+Function:        main
+Args:
+  - String:          'Cannot SLP vectorize list: type '
+  - String:          '<4 x double> is unsupported by vectorizer'
+...
+--- !Passed
+Pass:            loop-unroll
+Name:            PartialUnrolled
+DebugLoc:        { File: loops.cpp, Line: 17, Column: 5 }
+Function:        main
+Args:
+  - String:          'unrolled loop by a factor of '
+  - UnrollCount:     '3'
+  - String:          ' with a breakout at trip '
+  - BreakoutTrip:    '0'
+...
+--- !Passed
+Pass:            loop-unroll
+Name:            PartialUnrolled
+DebugLoc:        { File: loops.cpp, Line: 22, Column: 5 }
+Function:        main
+Args:
+  - String:          'unrolled loop by a factor of '
+  - UnrollCount:     '3'
+  - String:          ' with a breakout at trip '
+  - BreakoutTrip:    '0'
+...
+--- !Passed
+Pass:            loop-unroll
+Name:            PartialUnrolled
+DebugLoc:        { File: loops.cpp, Line: 27, Column: 5 }
+Function:        main
+Args:
+  - String:          'unrolled loop by a factor of '
+  - UnrollCount:     '5'
+  - String:          ' with a breakout at trip '
+  - BreakoutTrip:    '0'
+...
+--- !Passed
+Pass:            loop-unroll
+Name:            PartialUnrolled
+DebugLoc:        { File: loops.cpp, Line: 32, Column: 5 }
+Function:        main
+Args:
+  - String:          'unrolled loop by a factor of '
+  - UnrollCount:     '2'
+  - String:          ' with a breakout at trip '
+  - BreakoutTrip:    '0'
+...
+--- !Passed
+Pass:            loop-unroll
+Name:            PartialUnrolled
+DebugLoc:        { File: loops.cpp, Line: 36, Column: 5 }
+Function:        main
+Args:
+  - String:          'unrolled loop by a factor of '
+  - UnrollCount:     '5'
+  - String:          ' with a breakout at trip '
+  - BreakoutTrip:    '0'
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 19, Column: 7 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 19, Column: 7 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 18, Column: 7 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 18, Column: 7 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 18, Column: 20 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            trunc
+    DebugLoc:        { File: loops.cpp, Line: 18, Column: 20 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 19, Column: 7 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 19, Column: 7 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 18, Column: 7 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 18, Column: 7 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 18, Column: 20 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            trunc
+    DebugLoc:        { File: loops.cpp, Line: 18, Column: 20 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 19, Column: 7 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 19, Column: 7 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 18, Column: 7 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 18, Column: 7 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 18, Column: 20 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            trunc
+    DebugLoc:        { File: loops.cpp, Line: 18, Column: 20 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 24, Column: 7 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 24, Column: 7 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 24, Column: 18 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 24, Column: 18 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 23, Column: 14 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 23, Column: 14 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 24, Column: 7 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 24, Column: 7 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 24, Column: 18 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 24, Column: 18 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 23, Column: 14 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 23, Column: 14 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 24, Column: 7 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 24, Column: 7 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 24, Column: 18 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 24, Column: 18 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 23, Column: 14 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 23, Column: 14 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 29, Column: 21 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 29, Column: 21 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 28, Column: 7 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 28, Column: 7 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 28, Column: 25 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 28, Column: 25 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 29, Column: 21 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 29, Column: 21 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 28, Column: 7 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 28, Column: 7 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 28, Column: 25 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 28, Column: 25 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 29, Column: 21 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 29, Column: 21 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 28, Column: 7 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 28, Column: 7 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 28, Column: 25 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 28, Column: 25 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 29, Column: 21 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 29, Column: 21 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 28, Column: 7 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 28, Column: 7 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 28, Column: 25 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 28, Column: 25 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 29, Column: 21 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 29, Column: 21 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 28, Column: 7 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 28, Column: 7 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 28, Column: 25 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: loops.cpp, Line: 28, Column: 25 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 33, Column: 12 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 33, Column: 12 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 33, Column: 12 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 33, Column: 12 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 33, Column: 12 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 33, Column: 12 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 33, Column: 12 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 33, Column: 12 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 33, Column: 25 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 33, Column: 25 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 33, Column: 25 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 33, Column: 25 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 33, Column: 25 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 33, Column: 25 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 33, Column: 25 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 33, Column: 25 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 33, Column: 14 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 33, Column: 14 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 33, Column: 14 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 33, Column: 14 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 33, Column: 14 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 33, Column: 14 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 33, Column: 14 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 33, Column: 14 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 33, Column: 12 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 33, Column: 12 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 33, Column: 12 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 33, Column: 12 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 33, Column: 12 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 33, Column: 12 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 33, Column: 12 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 33, Column: 12 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 33, Column: 25 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 33, Column: 25 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 33, Column: 25 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 33, Column: 25 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 33, Column: 25 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 33, Column: 25 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 33, Column: 25 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 33, Column: 25 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 33, Column: 14 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 33, Column: 14 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 33, Column: 14 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 33, Column: 14 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 33, Column: 14 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 33, Column: 14 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 33, Column: 14 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 33, Column: 14 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: loops.cpp, Line: 37, Column: 23 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: loops.cpp, Line: 36, Column: 5 }
+Function:        main
+Args:
+  - String:          'sinking '
+  - Inst:            insertelement
+    DebugLoc:        { File: loops.cpp, Line: 36, Column: 5 }
+...
+--- !Missed
+Pass:            licm
+Name:            LoadWithLoopInvariantAddressInvalidated
+DebugLoc:        { File: loops.cpp, Line: 19, Column: 25 }
+Function:        main
+Args:
+  - String:          failed to move load with loop-invariant address because the loop may invalidate its value
+...
+--- !Missed
+Pass:            licm
+Name:            LoadWithLoopInvariantAddressInvalidated
+DebugLoc:        { File: loops.cpp, Line: 28, Column: 18 }
+Function:        main
+Args:
+  - String:          failed to move load with loop-invariant address because the loop may invalidate its value
+...
+--- !Analysis
+Pass:            prologepilog
+Name:            StackSize
+DebugLoc:        { File: loops.cpp, Line: 12, Column: 0 }
+Function:        main
+Args:
+  - NumStackBytes:   '24'
+  - String:          ' stack bytes in function'
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: loops.cpp, Line: 0, Column: 0 }
+Function:        main
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '6'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: loops.cpp, Line: 0, Column: 0 }
+Function:        main
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '4'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: loops.cpp, Line: 0, Column: 0 }
+Function:        main
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '15'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: loops.cpp, Line: 0, Column: 0 }
+Function:        main
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '1'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: loops.cpp, Line: 0, Column: 0 }
+Function:        main
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '20'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: loops.cpp, Line: 0, Column: 0 }
+Function:        main
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '2'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: loops.cpp, Line: 0, Column: 0 }
+Function:        main
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '28'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: loops.cpp, Line: 0, Column: 0 }
+Function:        main
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '1'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: loops.cpp, Line: 0, Column: 0 }
+Function:        main
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '26'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: loops.cpp, Line: 0, Column: 0 }
+Function:        main
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '5'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: loops.cpp, Line: 0, Column: 0 }
+Function:        main
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '22'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: loops.cpp, Line: 0, Column: 0 }
+Function:        main
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '10'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: loops.cpp, Line: 0, Column: 0 }
+Function:        main
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '9'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/ostream', 
+                   Line: 0, Column: 0 }
+Function:        main
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '2'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/ostream', 
+                   Line: 0, Column: 0 }
+Function:        main
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '2'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/ostream', 
+                   Line: 0, Column: 0 }
+Function:        main
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '6'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/ostream', 
+                   Line: 0, Column: 0 }
+Function:        main
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '10'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: '/usr/lib/gcc/x86_64-redhat-linux/11/../../../../include/c++/11/bits/basic_ios.h', 
+                   Line: 50, Column: 2 }
+Function:        main
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '1'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionCount
+DebugLoc:        { File: loops.cpp, Line: 12, Column: 0 }
+Function:        main
+Args:
+  - NumInstructions: '170'
+  - String:          ' instructions in function'
+...
+--- !Analysis
+Pass:            prologepilog
+Name:            StackSize
+DebugLoc:        { File: loops.cpp, Line: 0, Column: 0 }
+Function:        _GLOBAL__sub_I_loops.cpp
+Args:
+  - NumStackBytes:   '8'
+  - String:          ' stack bytes in function'
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+Function:        _GLOBAL__sub_I_loops.cpp
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '8'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionCount
+DebugLoc:        { File: loops.cpp, Line: 0, Column: 0 }
+Function:        _GLOBAL__sub_I_loops.cpp
+Args:
+  - NumInstructions: '8'
+  - String:          ' instructions in function'
+...

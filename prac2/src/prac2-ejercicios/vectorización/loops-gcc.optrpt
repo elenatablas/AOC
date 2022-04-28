@@ -1,0 +1,90 @@
+loops.cpp:42:20: note: Considering inline candidate std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(std::basic_ostream<_CharT, _Traits>::__ostream_type& (*)(std::basic_ostream<_CharT, _Traits>::__ostream_type&)) [with _CharT = char; _Traits = std::char_traits<char>]/1245.
+loops.cpp:42:20: optimized:  Inlining std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(std::basic_ostream<_CharT, _Traits>::__ostream_type& (*)(std::basic_ostream<_CharT, _Traits>::__ostream_type&)) [with _CharT = char; _Traits = std::char_traits<char>]/1245 into int main(int, char**)/955.
+loops.cpp:42:11: note: Considering inline candidate std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(double) [with _CharT = char; _Traits = std::char_traits<char>]/1243.
+loops.cpp:42:11: optimized:  Inlining std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(double) [with _CharT = char; _Traits = std::char_traits<char>]/1243 into int main(int, char**)/955.
+/usr/include/c++/11/bits/basic_ios.h:450:45: note: Considering inline candidate std::ctype<char>::char_type std::ctype<char>::widen(char) const/931.
+/usr/include/c++/11/bits/basic_ios.h:450:45: optimized:  Inlining std::ctype<char>::char_type std::ctype<char>::widen(char) const/931 into std::basic_ios<_CharT, _Traits>::char_type std::basic_ios<_CharT, _Traits>::widen(char) const [with _CharT = char; _Traits = std::char_traits<char>]/1340.
+/usr/include/c++/11/bits/basic_ios.h:450:29: note: Considering inline candidate const _Facet& std::__check_facet(const _Facet*) [with _Facet = std::ctype<char>]/1381.
+/usr/include/c++/11/bits/basic_ios.h:450:29: optimized:  Inlining const _Facet& std::__check_facet(const _Facet*) [with _Facet = std::ctype<char>]/1381 into std::basic_ios<_CharT, _Traits>::char_type std::basic_ios<_CharT, _Traits>::widen(char) const [with _CharT = char; _Traits = std::char_traits<char>]/1340.
+/usr/include/c++/11/ostream:682:19: note: Considering inline candidate std::basic_ostream<_CharT, _Traits>& std::flush(std::basic_ostream<_CharT, _Traits>&) [with _CharT = char; _Traits = std::char_traits<char>]/1341.
+/usr/include/c++/11/ostream:682:19: optimized:  Inlining std::basic_ostream<_CharT, _Traits>& std::flush(std::basic_ostream<_CharT, _Traits>&) [with _CharT = char; _Traits = std::char_traits<char>]/1341 into std::basic_ostream<_CharT, _Traits>& std::endl(std::basic_ostream<_CharT, _Traits>&) [with _CharT = char; _Traits = std::char_traits<char>]/1244.
+/usr/include/c++/11/ostream:682:39: note: Considering inline candidate std::basic_ios<_CharT, _Traits>::char_type std::basic_ios<_CharT, _Traits>::widen(char) const [with _CharT = char; _Traits = std::char_traits<char>]/1340.
+/usr/include/c++/11/ostream:682:39: missed:   will not early inline: std::basic_ostream<_CharT, _Traits>& std::endl(std::basic_ostream<_CharT, _Traits>&) [with _CharT = char; _Traits = std::char_traits<char>]/1244->std::basic_ios<_CharT, _Traits>::char_type std::basic_ios<_CharT, _Traits>::widen(char) const [with _CharT = char; _Traits = std::char_traits<char>]/1340, growth 8 exceeds --param early-inlining-insns divided by number of calls
+loops.cpp:45:1: note: Considering inline candidate void __static_initialization_and_destruction_0(int, int)/1555.
+loops.cpp:45:1: optimized:  Inlining void __static_initialization_and_destruction_0(int, int)/1555 into (static initializers for loops.cpp)/1675.
+/usr/include/c++/11/bits/locale_facets.h:880:23: optimized: speculatively devirtualizing call in std::ctype<char>::char_type std::ctype<char>::_ZNKSt5ctypeIcE5widenEc.part.0(char) const/1686 to virtual std::ctype<char>::char_type std::ctype<char>::do_widen(char) const/936
+/usr/include/c++/11/ostream:682:19: missed:   not inlinable: endl.isra/1688 -> std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, _Traits>::put(std::basic_ostream<_CharT, _Traits>::char_type) [with _CharT = char; _Traits = std::char_traits<char>]/1677, function body not available
+/usr/include/c++/11/ostream:704:24: missed:   not inlinable: endl.isra/1688 -> std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, _Traits>::flush() [with _CharT = char; _Traits = std::char_traits<char>]/1680, function body not available
+/usr/include/c++/11/bits/basic_ios.h:50:18: missed:   not inlinable: widen.isra/1687 -> void std::__throw_bad_cast()/1678, function body not available
+/usr/include/c++/11/bits/locale_facets.h:879:21: missed:   not inlinable: std::ctype<char>::char_type std::ctype<char>::_ZNKSt5ctypeIcE5widenEc.part.0(char) const/1686 -> void std::ctype<char>::_M_widen_init() const/1679, function body not available
+/usr/include/c++/11/iostream:74:25: missed:   not inlinable: (static initializers for loops.cpp)/1675 -> int __cxxabiv1::__cxa_atexit(void (*)(void*), void*, void*)/1683, function body not available
+/usr/include/c++/11/iostream:74:25: missed:   not inlinable: (static initializers for loops.cpp)/1675 -> std::ios_base::Init::Init()/1682, function body not available
+/usr/include/c++/11/ostream:221:25: missed:   not inlinable: int main(int, char**)/955 -> std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, _Traits>::_M_insert(_ValueT) [with _ValueT = double; _CharT = char; _Traits = std::char_traits<char>]/1681, function body not available
+/usr/include/c++/11/ostream:682:39: optimized:  Inlined widen.isra/1687 into endl.isra/1688 which now has time 42.365654 and size 25, net change of -8.
+optimized:  Inlined std::ctype<char>::char_type std::ctype<char>::_ZNKSt5ctypeIcE5widenEc.part.0(char) const/1686 into widen.isra/1687 which now has time 50.916232 and size 16, net change of -8.
+/usr/include/c++/11/ostream:113:13: optimized:  Inlined endl.isra/1688 into int main(int, char**)/955 which now has time 589411.177734 and size 97, net change of -5.
+Unit growth for small function inlining: 134->113 (-16%)
+
+Inlined 9 calls, eliminated 6 functions
+
+/usr/include/c++/11/bits/locale_facets.h:879:21: missed: statement clobbers memory: std::ctype<char>::_M_widen_init (_62);
+loops.cpp:17:23: optimized: Loop 2 distributed: split to 2 loops and 0 library calls.
+loops.cpp:15:29: missed: couldn't vectorize loop
+loops.cpp:15:29: missed: not vectorized: loop nest containing two or more consecutive inner loops cannot be vectorized
+loops.cpp:36:23: optimized: loop vectorized using 32 byte vectors
+loops.cpp:32:23: optimized: loop vectorized using 32 byte vectors
+loops.cpp:27:33: missed: couldn't vectorize loop
+loops.cpp:28:21: missed: not vectorized: no vectype for stmt: _13 = A[i_99];
+ scalar_type: double
+loops.cpp:22:23: missed: couldn't vectorize loop
+loops.cpp:23:17: missed: not vectorized: no vectype for stmt: _7 = A[i_98];
+ scalar_type: double
+loops.cpp:17:23: missed: couldn't vectorize loop
+loops.cpp:19:28: missed: not vectorized: no vectype for stmt: _4 = B[i_97];
+ scalar_type: double
+loops.cpp:17:23: optimized: loop vectorized using 32 byte vectors
+loops.cpp:17:23: optimized: loop vectorized using 16 byte vectors
+loops.cpp:12:5: note: vectorized 3 loops in function.
+loops.cpp:17:23: optimized: loop with 2 iterations completely unrolled (header execution count 10737413)
+loops.cpp:12:5: optimized: loop turned into non-loop; it never loops
+/usr/include/c++/11/ostream:221:25: missed: statement clobbers memory: _51 = std::basic_ostream<char>::_M_insert<double> (&cout, total_92);
+/usr/include/c++/11/bits/locale_facets.h:879:21: missed: statement clobbers memory: std::ctype<char>::_M_widen_init (_62);
+/usr/include/c++/11/bits/locale_facets.h:880:23: missed: statement clobbers memory: _75 = OBJ_TYPE_REF(_73;_62->6) (_62, 10);
+/usr/include/c++/11/ostream:682:19: missed: statement clobbers memory: _60 = std::basic_ostream<char>::put (_51, _59);
+/usr/include/c++/11/ostream:704:24: missed: statement clobbers memory: std::basic_ostream<char>::flush (_60);
+/usr/include/c++/11/bits/basic_ios.h:50:18: missed: statement clobbers memory: std::__throw_bad_cast ();
+loops.cpp:18:12: note: ***** Analysis succeeded with vector mode V4DF
+loops.cpp:18:12: note: SLPing BB part
+loops.cpp:18:12: note: Costing subgraph: 
+loops.cpp:18:12: note: node 0x38159f8 (max_nunits=2, refcnt=1)
+loops.cpp:18:12: note: op template: A[999996] = 6.66664e+5;
+loops.cpp:18:12: note: 	stmt 0 A[999996] = 6.66664e+5;
+loops.cpp:18:12: note: 	stmt 1 A[999997] = 6.66664e+5;
+loops.cpp:18:12: note: 	children 0x3815a70
+loops.cpp:18:12: note: node (constant) 0x3815a70 (max_nunits=1, refcnt=1)
+loops.cpp:18:12: note: 	{ 6.66664e+5, 6.66664e+5 }
+loops.cpp:18:12: note: Cost model analysis: 
+loops.cpp:18:12: note: Cost model analysis for part in loop 1:
+  Vector cost: 28
+  Scalar cost: 32
+loops.cpp:18:12: note: Basic block will be vectorized using SLP
+loops.cpp:18:12: note: Vectorizing SLP tree:
+loops.cpp:18:12: note: node 0x38159f8 (max_nunits=2, refcnt=1)
+loops.cpp:18:12: note: op template: A[999996] = 6.66664e+5;
+loops.cpp:18:12: note: 	stmt 0 A[999996] = 6.66664e+5;
+loops.cpp:18:12: note: 	stmt 1 A[999997] = 6.66664e+5;
+loops.cpp:18:12: note: 	children 0x3815a70
+loops.cpp:18:12: note: node (constant) 0x3815a70 (max_nunits=1, refcnt=1)
+loops.cpp:18:12: note: 	{ 6.66664e+5, 6.66664e+5 }
+loops.cpp:18:12: note: ------>vectorizing SLP node starting from: A[999996] = 6.66664e+5;
+loops.cpp:18:12: note: vect_is_simple_use: operand 6.66664e+5, type of def: constant
+loops.cpp:18:12: note: transform store. ncopies = 1
+loops.cpp:18:12: note: create vector_type-pointer variable to type: vector(2) double  vectorizing a pointer ref: A[999996]
+loops.cpp:18:12: note: created &A[999996]
+loops.cpp:18:12: note: add new stmt: MEM <vector(2) double> [(double *)&A + 7999968B] = { 6.66664e+5, 6.66664e+5 };
+loops.cpp:18:12: note: vectorizing stmts using SLP.
+loops.cpp:18:12: optimized: basic block part vectorized using 32 byte vectors
+loops.cpp:18:12: note: ***** The result for vector mode V32QI would be the same
+/usr/include/c++/11/iostream:74:25: missed: statement clobbers memory: std::ios_base::Init::Init (&__ioinit);
+/usr/include/c++/11/iostream:74:25: missed: statement clobbers memory: __cxxabiv1::__cxa_atexit (__dt_comp , &__ioinit, &__dso_handle);
+loops.cpp:45:1: note: ***** Analysis failed with vector mode VOID
