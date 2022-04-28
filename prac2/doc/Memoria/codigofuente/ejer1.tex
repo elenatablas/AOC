@@ -1,0 +1,20 @@
+%%%%%%%%%%%%%%%%%%%%%% Procesadores CMP: usando la vectorización y la paralelización - EJERCICIO 1 %%%%%%%%%%%%%%%%%%%%%%
+\section{Ejercicio 1}
+\subsection{Enunciado}
+\begin{ejer}
+    \textbf{1.-} En el subdirectorio \texttt{vectorización} hay un pequeño programa que tiene 6 bucles.
+    \begin{itemize}
+        \item Para cada uno de los bucles del programa, identifica las dependencias entre iteraciones que tiene
+    y explica cómo afectarían a una posible vectorización automática.
+        \item Utiliza el \texttt{Makefile} incluido para compilar el programa con el compilador \texttt{ICC} y generar
+    el informe de optimización. Para cada bucle mencionado en el informe, explica por qué ha sido vectorizado o por qué no 
+    se ha podido vectorizar. En especial, para los bucles en los que se hubieran identificado dependencias entre iteraciones
+     en el punto anterior:
+        \begin{itemize}
+            \item Explica en caso de que haya sido vectorizado qué transformaciones ha aplicado automáticamente el compilador.
+            \item Y en caso de que no haya sido vectorizado, indica si crees que existe alguna transformación manual posible para
+            que se pudiera vectorizar.
+        \end{itemize}
+    \end{itemize}
+\end{ejer}
+\subsection{Desarrollo}
