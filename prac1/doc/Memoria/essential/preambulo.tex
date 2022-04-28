@@ -1,0 +1,140 @@
+
+%Margenes
+\usepackage[margin=1 in, includefoot]{geometry}
+
+% Acentos, letras, etc
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\addto\captionsspanish{
+\renewcommand{\chaptername}{}
+}
+\selectlanguage{spanish}
+\usepackage{lettrine, Zallman}
+\renewcommand\LettrineFontHook{\Zallmanfamily}
+
+\usepackage{times}
+\usepackage{ulem} % texto tachado
+\usepackage{soul}
+\usepackage{lipsum}
+\usepackage{comment}
+
+% Header and Footer Stuff
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[L,RO]{}
+\fancyhead[LO,R]{}
+\lhead[\leftmark]{Pérez González-Tablas, Elena}
+\rhead[Nombre Autor]{AOC, 2021/22}
+\renewcommand{\footrulewidth}{1pt}
+
+% Licencia
+\usepackage[
+    type={CC},
+    modifier={by-nc-sa},
+    version={3.0},
+]{doclicense}
+
+% Enumerados
+\renewcommand{\labelenumii}{\alph{enumii}$)$ }
+
+%hipervínculos, referencias, citas, etc
+\usepackage[colorlinks=true, 
+		    linkcolor=blue, 
+		    citecolor = black,
+		    urlcolor = blue]{hyperref}
+
+% Símbolos matemáticos
+\usepackage{amsmath}
+
+% Figuras
+\usepackage{float}
+\usepackage{subfigure}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+
+%https://ondahostil.wordpress.com/2017/05/17/lo-que-he-aprendido-cuadros-de-texto-de-colores-en-latex/
+\usepackage{lmodern}
+\usepackage{tcolorbox}
+\tcbuselibrary{listingsutf8}
+\newtcolorbox[auto counter,number within=subsection]{ejer}[1][]
+{colback=blue!5!white,colframe=blue!75!black,fonttitle=\bfseries, title=#1}
+
+\usepackage{color} % color en texto
+%Creación de mis propios colores
+
+\definecolor{rojoOscuro}{RGB}{153,0,0}
+\definecolor{verdeOscuro}{RGB}{0,153,0}
+\definecolor{gray97}{gray}{.97}
+\definecolor{gray75}{gray}{.75}
+\definecolor{gray45}{gray}{.45}
+
+% Código
+\usepackage{listings}
+% Letra para código http://www.rafalinux.com/?p=599
+\usepackage{inconsolata}
+
+\lstset{ 
+	language=C,
+%
+	frame=Ltb,
+	framerule=0pt,
+	aboveskip=0.2cm,
+	framextopmargin=3pt,
+	framexbottommargin=3pt,
+	framexleftmargin=1.0pt,
+	framesep=0.2pt,
+	rulesep=1.0pt,
+	backgroundcolor=\color{gray97},
+	rulesepcolor=\color{black},
+%
+	stringstyle=\ttfamily,
+	showstringspaces = false,
+	basicstyle=\small\ttfamily,
+	commentstyle=\color{gray45},
+	keywordstyle=\bfseries,
+%
+	numbers=left,
+	numbersep=7pt,
+	numberstyle=\tiny,
+	numberfirstline = false,
+	breaklines=true,
+%
+	morecomment=[f][\color{gray45}]{@@},
+  	morecomment=[f][\color{verdeOscuro}]{+\ },
+  	morecomment=[f][\color{rojoOscuro}]{-\ },
+}
+
+% minimizar fragmentado de listados
+\lstnewenvironment{listing}[1][]
+{\lstset{#1}\pagebreak[0]}{\pagebreak[0]}
+
+\lstdefinestyle{consola}
+{basicstyle=\scriptsize\bf\ttfamily,
+backgroundcolor=\color{gray75},
+}
+
+\graphicspath{ {images/} }
+
+\usepackage{array,tikz}
+\usetikzlibrary{matrix,positioning}
+
+\tikzset{  % Define some styles
+  my table/.style = {
+    matrix of nodes,
+    nodes = {minimum width=3em, minimum height=2.5em, inner sep=3pt},
+    draw,
+    inner sep=0pt,
+  },
+  my arrow/.style = {
+    -latex,
+    shorten >= -5pt,
+    shorten <= -5pt,
+    black!50!black!60,
+  }
+}
+% Macro to draw the lines between rows
+\def\drawLineBelowRow#1#2{% #1: row number, #2: matrix name
+  \draw (#2.west|-#2-#1-1.south) -- (#2.east|-#2-#1-1.south);
+}
+
