@@ -1,12 +1,13 @@
 \subsection{Transformación manual para vectorizar}
 
 \input{codigofuente/ejer1/transformacion/buc1}
+\newpage
 \input{codigofuente/ejer1/transformacion/buc3}
 
 \par El primer y tercer bucle no se pueden vectorizar de forma automática porque tiene dependencias. No son inmediatamente
 vectorizables, tampoco se puede reorganizar el código para evitar las dependencias ni crear instrucciones parciales para mitigar la
 dependencia. No he encontrado ninguna transformación manual para poder vectorizarlos. Separar cada bucle en dos sería
 ineficiente y el compilador descarta la vectorización de la instrucción que ya no tendría dependencia por tanto este cambio no
-sería una solución. A lo mejor se puede programar usando los instrinsics vectoriales, que son un conjunto de funciones
+sería una solución. A lo mejor se puede programar usando los \texttt{instrinsics} vectoriales, que son un conjunto de funciones
 disponibles para lenguajes de alto nivel que corresponden directamente a instrucciones vectoriales o hay alguna librería
-optimizada que ya esté vectorizada porque la idea de programar en lenguaje ensamblador hoy en día casi nunca se realiza.
+optimizada que ya esté vectorizada, porque la idea de programar en lenguaje ensamblador hoy en día casi nunca se realiza.

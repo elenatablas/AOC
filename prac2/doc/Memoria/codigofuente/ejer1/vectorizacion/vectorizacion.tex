@@ -1,4 +1,22 @@
 \subsection{Vectorización automática}
+\par La vectorización es automática, hay que darle al compilador suficiente información para que pueda tomar las decisiones correctas
+y pueda optimizar cuando sea vectorizable el programa, para ello es necesario comprobar que al compilar se utiliza la opción de
+optimización \texttt{-O2} o superior.
+
+\par Nos indica los parámetros que se han utilizado: \texttt{Report from: Loop nest, Vector \& Auto-parallelization optimizations
+[loop, vec, par]}
+\begin{itemize}
+    \item \textbf{prac2-ejercicios/vectorización/loops-icc.optrpt}
+
+\begin{listing}[firstnumber=44]
+    @@ -45,4 +45,4 @@ 
+    LOOP BEGIN at loops.cpp(15,3)
+        remark #15542: loop was not vectorized: inner loop was already vectorized
+        ...
+    LOOP END
+\end{listing}
+\end{itemize}
+\par El bucle exterior no se vectoriza, si no los bucles que están dentro, pero como es un bucle está representado en el informe.
 
 \input{codigofuente/ejer1/vectorizacion/buc2}
 \input{codigofuente/ejer1/vectorizacion/buc4}

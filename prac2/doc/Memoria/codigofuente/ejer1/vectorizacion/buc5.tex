@@ -1,0 +1,73 @@
+\subsubsection{\textbf{5ºBucle:}}
+\begin{listing}[firstnumber=126]
+    @@ -127,3 +127,3 @@
+    LOOP BEGIN at loops.cpp(36,5)
+        remark #15300: LOOP WAS VECTORIZED
+    LOOP END
+\end{listing}
+\par Para saber como optimiza este bucle podemos ver el código ensamblador generado con el comando \texttt{\$ objdump -S loops | less}
+en el que se puede ver como utiliza 8 registros para almacenar los totales parciales de ocho en ocho en cada iteración.
+
+\begin{listing}[numbers=none, basicstyle=\scriptsize\ttfamily]
+    400ee5: 0f ae f0                mfence
+    400ee8: c5 7d 6f d1             vmovdqa %ymm1,%ymm10
+    400eec: 33 c0                   xor %eax,%eax
+    400eee: c4 41 25 57 db          vxorpd %ymm11,%ymm11,%ymm11
+    400ef3: c5 7d 6f c9             vmovdqa %ymm1,%ymm9
+    400ef7: c5 7d 6f c1             vmovdqa %ymm1,%ymm8
+    400efb: c5 fd 6f f9             vmovdqa %ymm1,%ymm7
+    400eff: c5 fd 6f f1             vmovdqa %ymm1,%ymm6
+    400f03: c5 fd 28 e9             vmovapd %ymm1,%ymm5
+    400f07: c5 fd 28 e1             vmovapd %ymm1,%ymm4
+    400f0b: 0f 1f 44 00 00          nopl 0x0(%rax,%rax,1)
+    400f10: c5 25 58 1c c5 60 61    vaddpd 0x1546160(,%rax,8),%ymm11,%ymm11
+    400f17: 54 01
+    400f19: c5 2d 58 14 c5 80 61    vaddpd 0x1546180(,%rax,8),%ymm10,%ymm10
+    400f20: 54 01
+    400f22: c5 35 58 0c c5 a0 61    vaddpd 0x15461a0(,%rax,8),%ymm9,%ymm9
+    400f29: 54 01
+    400f2b: c5 3d 58 04 c5 c0 61    vaddpd 0x15461c0(,%rax,8),%ymm8,%ymm8
+    400f32: 54 01
+    400f34: c5 c5 58 3c c5 e0 61    vaddpd 0x15461e0(,%rax,8),%ymm7,%ymm7
+    400f3b: 54 01
+    400f3d: c5 cd 58 34 c5 00 62    vaddpd 0x1546200(,%rax,8),%ymm6,%ymm6
+    400f44: 54 01
+    400f46: c5 d5 58 2c c5 20 62    vaddpd 0x1546220(,%rax,8),%ymm5,%ymm5
+    400f4d: 54 01
+    400f4f: c5 dd 58 24 c5 40 62    vaddpd 0x1546240(,%rax,8),%ymm4,%ymm4
+    400f56: 54 01
+    400f58: 48 83 c0 20             add $0x20,%rax
+    400f5c: 48 3d 40 42 0f 00       cmp $0xf4240,%rax
+    400f62: 72 ac                   jb 400f10 <main+0x200>
+    400f64: c4 41 25 58 d2          vaddpd %ymm10,%ymm11,%ymm10
+    400f69: fe c1                   inc %cl
+    400f6b: c4 41 35 58 c0          vaddpd %ymm8,%ymm9,%ymm8
+    400f70: c5 c5 58 f6             vaddpd %ymm6,%ymm7,%ymm6
+    400f74: c5 d5 58 e4             vaddpd %ymm4,%ymm5,%ymm4
+    400f78: c4 41 2d 58 c8          vaddpd %ymm8,%ymm10,%ymm9
+    400f7d: c5 cd 58 ec             vaddpd %ymm4,%ymm6,%ymm5
+    400f81: c5 b5 58 fd             vaddpd %ymm5,%ymm9,%ymm7
+    400f85: c4 c3 7d 19 fb 01       vextractf128 $0x1,%ymm7,%xmm11
+    400f8b: c4 41 41 58 e3          vaddpd %xmm11,%xmm7,%xmm12
+    400f90: c4 41 19 15 ec          vunpckhpd %xmm12,%xmm12,%xmm13
+    400f95: c4 41 1b 58 f5          vaddsd %xmm13,%xmm12,%xmm14
+    400f9a: c5 8b 58 c0             vaddsd %xmm0,%xmm14,%xmm0
+    400f9e: 80 f9 64                cmp $0x64,%cl
+    400fa1: 0f 82 b2 fd ff ff       jb 400d59 <main+0x49>
+\end{listing}
+\par En \texttt{C} el código equivalente sería:
+\begin{listing}[firstnumber=35]
+    @@ -36,3 +36,11 @@
+    + for (int i = 0; i < arrays_size; i+=8)
+    + {
+    +    ymm11 = ymm11 + c[i];
+    +    ymm10 = ymm10 + c[i+1];
+    +    ymm9 = ymm9 + c[i+2];
+    +    ymm8 = ymm8 + c[i+3];
+    +    ymm7 = ymm7 + c[i+4];
+    +    ymm6 = ymm6 + c[i+5];
+    +    ymm5 = ymm5 + c[i+6];
+    +    ymm4 = ymm4 + c[i+7];
+    + }
+    + total = ymm11+ymm10+ymm9+ymm8+ymm7+ymm6+ymm5+ymm4+total;
+\end{listing}

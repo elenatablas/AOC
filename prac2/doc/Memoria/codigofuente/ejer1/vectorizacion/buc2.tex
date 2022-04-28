@@ -1,0 +1,31 @@
+\subsubsection{\textbf{2ºBucle:}}
+\begin{listing}[firstnumber=81]
+    @@ -81,4 +81,4 @@
+    LOOP BEGIN at loops.cpp(22,5)
+        remark #25427: Loop Statements Reordered
+        remark #15300: LOOP WAS VECTORIZED
+    LOOP END
+\end{listing}
+\par Ha sido vectorizado con una reorganización del código. Para saber como optimiza este bucle podemos ver el código
+ensamblador generado con el comando \texttt{\$ objdump -S loops | less} en el que se puede ver como se hace primero la
+multiplicación y después la resta. Es decir, cambia el orden de las instrucciones dentro del bucle para que no haya dependencia
+poniendo inicialmente fuera del bucle una instrucción de resta y al terminar el bucle otra de multiplicación, como he explicado en
+el anterior apartado del ejercicio.
+\begin{listing}[numbers=none, basicstyle=\scriptsize\ttfamily]
+    400d95: 33 d2                   xor %edx,%edx
+    400d97: b8 01 00 00 00          mov $0x1,%eax
+    400d9c: c5 ed 59 24 d5 60 61    vmulpd 0x1546160(,%rdx,8),%ymm2,%ymm4
+    400da3: 54 01
+    400da5: c5 fd 10 2c d5 60 3d    vmovupd 0x603d60(,%rdx,8),%ymm5
+    400dac: 60 00
+    400dae: c5 fd 11 24 c5 60 4f    vmovupd %ymm4,0xda4f60(,%rax,8)
+    400db5: da 00
+    400db7: c5 d5 5c 34 d5 60 4f    vsubpd 0xda4f60(,%rdx,8),%ymm5,%ymm6
+    400dbe: da 00
+    400dc0: 48 83 c0 04             add $0x4,%rax
+    400dc4: c5 fd 11 34 d5 60 3d    vmovupd %ymm6,0x603d60(,%rdx,8)
+    400dcb: 60 00
+    400dcd: 48 83 c2 04             add $0x4,%rdx
+    400dd1: 48 81 fa 3c 42 0f 00    cmp $0xf423c,%rdx
+    400dd8: 72 c2                   jb 400d9c <main+0x8c>
+\end{listing}
