@@ -25,7 +25,7 @@
 \fancyhead[L,RO]{}
 \fancyhead[LO,R]{}
 \lhead[\leftmark]{Pérez González-Tablas, Elena}
-\rhead[Nombre Autor]{AOC, 2021/22}
+\rhead[Nombre Autor]{Arquitectura y Organización de Computadores, 2021/22}
 \renewcommand{\footrulewidth}{1pt}
 
 % Licencia
@@ -79,30 +79,31 @@
 %
 	frame=Ltb,
 	framerule=0pt,
-	aboveskip=0.2cm,
+	aboveskip=0.5cm,
 	framextopmargin=3pt,
 	framexbottommargin=3pt,
-	framexleftmargin=1.0pt,
-	framesep=0.2pt,
-	rulesep=1.0pt,
+	framexrightmargin=-0.4cm,
+	framexleftmargin=-0.4cm,
+	framesep=-.2pt,
+	rulesep=.4pt,
 	backgroundcolor=\color{gray97},
 	rulesepcolor=\color{black},
-%
+	%
 	stringstyle=\ttfamily,
 	showstringspaces = false,
 	basicstyle=\small\ttfamily,
 	commentstyle=\color{gray45},
 	keywordstyle=\bfseries,
-%
+	%
 	numbers=left,
-	numbersep=7pt,
-	numberstyle=\tiny,
+	numberstyle=\color{gray},
+	numbersep=-7pt,
 	numberfirstline = false,
 	breaklines=true,
-%
-	morecomment=[f][\color{gray45}]{@@},
-  	morecomment=[f][\color{verdeOscuro}]{+\ },
-  	morecomment=[f][\color{rojoOscuro}]{-\ },
+	%
+	morecomment=[f][\color{gray45}][4]{@@},
+  	morecomment=[f][\color{verdeOscuro}][4]{+\ },
+  	morecomment=[f][\color{rojoOscuro}][4]{-\ },
 }
 
 % minimizar fragmentado de listados
@@ -113,6 +114,7 @@
 {basicstyle=\scriptsize\bf\ttfamily,
 backgroundcolor=\color{gray75},
 }
+
 
 \graphicspath{ {images/} }
 
