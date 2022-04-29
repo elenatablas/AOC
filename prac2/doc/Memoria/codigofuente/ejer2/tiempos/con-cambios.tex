@@ -1,6 +1,9 @@
 
 \subsubsection{\textbf{Paralelización de los tres bucles:}}
-
+\subsubsection{\textbf{Bucle 1+2:}}
+\par Esta combinación se asemeja a los resultados de la opción de solo intentar paralelizar el primer 
+bucle, por tanto en algunos casos mejora pero insignitivamente. Además, cuantos más hilos hay, empeora 
+el tiempo de ejecución progresivamente.
 %%% TABLA DE TIEMPOS E IMÁGENES %%%
 \begin{figure}[H]
     \centering
@@ -89,6 +92,13 @@
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{\textbf{Bucle 2+3:}}
+
+\par Estos dos bucles anidados también podría ponerse el pragma \texttt{\#pragma omp parallel for collapse(2) reduction (+:difference)}
+antes del primer bucle y comprobando los tiempos se puede ver que empeora el tiempo de ejecución considerablemente. Esta combinación se asemeja a los resultados de 
+la opción más óptima en cuanto a la trayectoria de la gráfica, pero si comparamos con los resultados de la ejecución del programa sin 
+modificaciones podemos ver que esta combinación no mejora nada y además empeora cuando hay pocos hilos. 
+
 %%% TABLA DE TIEMPOS E IMÁGENES %%%
 \begin{figure}[H]
     \centering

@@ -2,8 +2,8 @@
 \subsubsection{\textbf{1ºBucle:}}
 \par El primer bucle es \texttt{while(difference / (state.height * state.width) > tolerance)}. Se podría paralelizar creando una rama master y añadiendo un pragma de tipo
 \texttt{task} que comparte la variable \texttt{iterations} antes del \texttt{if(verbose)} porque la ejecución de la siguiente iteración no depende de esto.
-Además, dentro de esta task se necesita un pragma \texttt{atomic} porque solo un hilo puede modificar a la vez esa variable global. Esta
-implementación mostrada en el código siguiente, no ayuda mucho en el rendimiento de la aplicación y la mejora es despreciable e incluso en 
+Además, dentro de esta \texttt{task} se necesita un pragma \texttt{atomic}, porque solo un hilo puede modificar a la vez esa variable global. Esta
+implementación, mostrada en el código siguiente, no ayuda mucho en el rendimiento de la aplicación y la mejora es despreciable e incluso en 
 algunos casos es peor como se indica en todas las tablas y gráficas.
 %%% TABLA DE TIEMPOS E IMÁGENES %%%
 \begin{figure}[H]

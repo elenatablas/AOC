@@ -2,7 +2,26 @@
 \subsubsection{\textbf{3ºBucle:}}
 
 \par El tercer bucle es el bucle interior que está anidado \texttt{for (size\_t j = 1; j < state.width - 1; ++j)},
- se añadiría el mismo \texttt{pragma} que en el caso anterior pero el rendimiento es mucho más lento.
+ se añadiría el mismo \texttt{pragma} que en el caso anterior pero el rendimiento es mucho más lento. 
+ Empeora signitivamente el tiempo de ejecución, por tanto es de las peores opciones y no es una mejora.
+
+ \subsubsection{\textbf{heat.cpp}}
+ \begin{listing}[firstnumber=25]
+     @@ -26,12 +26,13 @@   void solve() {
+   
+        for (size_t i = 1; i < state.height - 1; ++i) {
+  + #pragma omp parallel for reduction (max:difference)
+            for (size_t j = 1; j < state.width - 1; ++j) {
+                next_state[i][j] = (state[i][j]
+                                   + state[i + 1][j]  
+                                   + state[i - 1][j]  
+                                   + state[i][j + 1]  
+                                   + state[i][j - 1]) / 5;
+                difference = difference 
+                             + abs(next_state[i][j]-state[i][j]);
+            }
+        }
+ \end{listing}
 
 %%% TABLA DE TIEMPOS E IMÁGENES %%%
 \begin{figure}[H]
@@ -90,6 +109,3 @@
     \caption{\underline{Tamaño largo}: Tiempos de ejecución vs nº de hilos}
     \label{bucle3=03-large}
 \end{figure}
-
-\par Estos dos bucles anidados también podría ponerse el pragma \texttt{\#pragma omp parallel for collapse(2) reduction (max:difference)}
-pero comprobando los tiempos se puede ver que empeora el tiempo de ejecución.

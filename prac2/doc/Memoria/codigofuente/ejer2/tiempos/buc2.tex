@@ -1,9 +1,9 @@
 
-\subsubsection{\textbf{2ºBucle:}}
+\subsubsection{\textbf{2ºBucle:} \color{verdeOscuro}{\underline{Solución Óptima}}}
 
 \par El segundo es el bucle exterior \texttt{for (size\_t i = 1; i < state.height - 1; ++i)}, es el mejor candidato para paralelizar, hay que añadir un
-pragma \texttt{\#pragma omp parallel for reduction (max:difference)} para que ejecute las instrucciones en paralelo pero tenga en cuenta la
-instrucción max que no deben de ejecutarla dos hilos a la vez.
+pragma \texttt{\#pragma omp parallel for reduction (+:difference)} para que ejecute las instrucciones en paralelo, pero teniendo en cuenta que la
+instrucción, \texttt{difference = difference + abs (next\_state[ i ][ j ] - state[ i ][ j ]);}, no deben de ejecutarla dos hilos a la vez.
 
 %%% TABLA DE TIEMPOS E IMÁGENES %%%
 \begin{figure}[H]
@@ -91,3 +91,20 @@ instrucción max que no deben de ejecutarla dos hilos a la vez.
     \caption{\underline{Tamaño largo}: Tiempos de ejecución vs nº de hilos}
     \label{bucle2=03-large}
 \end{figure}
+
+\subsubsection{\textbf{heat.cpp}}
+\begin{listing}[firstnumber=25]
+    @@ -26,12 +26,13 @@   void solve() {
+  + #pragma omp parallel for reduction (max:difference)
+        for (size_t i = 1; i < state.height - 1; ++i) {
+            for (size_t j = 1; j < state.width - 1; ++j) {
+                next_state[i][j] = (state[i][j]
+                                + state[i + 1][j]  
+                                + state[i - 1][j]  
+                                + state[i][j + 1]  
+                                + state[i][j - 1]) / 5;
+                difference = difference 
+                             + abs(next_state[i][j]-state[i][j]);
+            }
+        }
+\end{listing}
