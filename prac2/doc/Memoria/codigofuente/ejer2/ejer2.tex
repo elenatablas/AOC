@@ -40,13 +40,25 @@
     \end{itemize}
 \end{ejer}
  %%% IMÁGENES %%%
-\begin{figure}[H]
+\begin{figure}
     \centering
-    \subfigure[Tiempo de ejecución vs nº de hilos]{
+    \begin{subfigure}{0.4\textwidth}
+        \includegraphics[width=\textwidth]{p2enun2-1}
+        \caption{Tiempo de ejecución vs nº de hilos}
         \label{fig:p2enun2-1}
-        \includegraphics[width=0.45\textwidth]{p2enun2-1}}
-    \subfigure[Escalabilidad de la aplicación]{
+    \end{subfigure}
+    \begin{subfigure}{0.4\textwidth}
+        \includegraphics[width=\textwidth]{p2enun2-2}
+        \caption{Escalabilidad de la aplicación}
         \label{fig:p2enun2-2}
-        \includegraphics[width=0.45\textwidth]{p2enun2-2}}
+    \end{subfigure}
 \end{figure}
-\subsection{Desarrollo}
+
+\subsection{Tiempos y gráficas}
+
+\input{codigofuente/ejer2/tiempos/sin-cambios}
+\input{codigofuente/ejer2/tiempos/buc1}
+\input{codigofuente/ejer2/tiempos/buc2}
+\input{codigofuente/ejer2/tiempos/buc3}
+\input{codigofuente/ejer2/tiempos/con-cambios}
+
