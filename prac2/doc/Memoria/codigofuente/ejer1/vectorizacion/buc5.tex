@@ -58,16 +58,16 @@ en el que se puede ver como utiliza 8 registros para almacenar los totales parci
 \par En \texttt{C} el código equivalente sería:
 \begin{listing}[firstnumber=35]
     @@ -36,3 +36,11 @@
-    + for (int i = 0; i < arrays_size; i+=8)
-    + {
-    +    ymm11 = ymm11 + c[i];
-    +    ymm10 = ymm10 + c[i+1];
-    +    ymm9 = ymm9 + c[i+2];
-    +    ymm8 = ymm8 + c[i+3];
-    +    ymm7 = ymm7 + c[i+4];
-    +    ymm6 = ymm6 + c[i+5];
-    +    ymm5 = ymm5 + c[i+6];
-    +    ymm4 = ymm4 + c[i+7];
-    + }
-    + total = ymm11+ymm10+ymm9+ymm8+ymm7+ymm6+ymm5+ymm4+total;
+  + for (int i = 0; i < arrays_size; i+=8)
+  + {
+  +    ymm11 = ymm11 + c[i];
+  +    ymm10 = ymm10 + c[i+1];
+  +    ymm9 = ymm9 + c[i+2];
+  +    ymm8 = ymm8 + c[i+3];
+  +    ymm7 = ymm7 + c[i+4];
+  +    ymm6 = ymm6 + c[i+5];
+  +    ymm5 = ymm5 + c[i+6];
+  +    ymm4 = ymm4 + c[i+7];
+  + }
+  + total = ymm11+ymm10+ymm9+ymm8+ymm7+ymm6+ymm5+ymm4+total;
 \end{listing}
