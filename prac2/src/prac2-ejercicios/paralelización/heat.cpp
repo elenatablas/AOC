@@ -22,9 +22,15 @@ void solve(Matrix<double>& state, double tolerance, int& iterations, double& las
   Matrix<double> next_state = state;
   iterations = 0;
   double difference;
+// #pragma omp parallel
+// {
+// #pragma omp master
   do {
     difference = 0;
+// #pragma omp parallel for collapse(2) reduction (+:difference)
+#pragma omp parallel for reduction (+:difference)
     for (size_t i = 1; i < state.height - 1; ++i) {
+// #pragma omp parallel for reduction (+:difference)
       for (size_t j = 1; j < state.width - 1; ++j) {
         next_state[i][j] = (state[i][j]
                             + state[i + 1][j    ]  
@@ -36,14 +42,19 @@ void solve(Matrix<double>& state, double tolerance, int& iterations, double& las
     }
 
     state.swap_data(next_state);
-    
+
+// #pragma omp task shared(iterations)
+//{    
     if (verbose) {
       cout << "Iteration " << iterations << ":" << endl;
       printf_matrix("%7.3f", state);
       cout << "Difference: " << difference << endl;
     }
+// #pragma omp atomic
     ++iterations;
+// }
   } while (difference / (state.height * state.width) > tolerance);
   last_difference = difference / (state.height * state.width);
+// }
 }
 
