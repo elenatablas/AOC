@@ -1,0 +1,279 @@
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: binning.cpp, Line: 13, Column: 73 }
+Function:        _Z12BinParticlesRK13InputDataTypeRA10_A10_i
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: binning.cpp, Line: 13, Column: 73 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: binning.cpp, Line: 13, Column: 44 }
+Function:        _Z12BinParticlesRK13InputDataTypeRA10_A10_i
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: binning.cpp, Line: 13, Column: 44 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: binning.cpp, Line: 13, Column: 21 }
+Function:        _Z12BinParticlesRK13InputDataTypeRA10_A10_i
+Args:
+  - String:          'sinking '
+  - Inst:            zext
+    DebugLoc:        { File: binning.cpp, Line: 13, Column: 21 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: binning.cpp, Line: 13, Column: 31 }
+Function:        _Z12BinParticlesRK13InputDataTypeRA10_A10_i
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: binning.cpp, Line: 13, Column: 31 }
+...
+--- !Passed
+Pass:            licm
+Name:            Hoisted
+DebugLoc:        { File: binning.cpp, Line: 13, Column: 31 }
+Function:        _Z12BinParticlesRK13InputDataTypeRA10_A10_i
+Args:
+  - String:          'hoisting '
+  - Inst:            getelementptr
+    DebugLoc:        { File: binning.cpp, Line: 13, Column: 31 }
+...
+--- !Passed
+Pass:            licm
+Name:            Hoisted
+DebugLoc:        { File: binning.cpp, Line: 13, Column: 31 }
+Function:        _Z12BinParticlesRK13InputDataTypeRA10_A10_i
+Args:
+  - String:          'hoisting '
+  - Inst:            load
+    DebugLoc:        { File: binning.cpp, Line: 13, Column: 31 }
+...
+--- !Missed
+Pass:            licm
+Name:            LoadWithLoopInvariantAddressInvalidated
+DebugLoc:        { File: binning.cpp, Line: 11, Column: 33 }
+Function:        _Z12BinParticlesRK13InputDataTypeRA10_A10_i
+Args:
+  - String:          failed to move load with loop-invariant address because the loop may invalidate its value
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: binning.cpp, Line: 11, Column: 33 }
+Function:        _Z12BinParticlesRK13InputDataTypeRA10_A10_i
+Args:
+  - String:          'load of type '
+  - Type:            i32
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     load
+    DebugLoc:        { File: binning.cpp, Line: 11, Column: 33 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     store
+    DebugLoc:        { File: binning.cpp, Line: 21, Column: 5 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: binning.cpp, Line: 11, Column: 33 }
+Function:        _Z12BinParticlesRK13InputDataTypeRA10_A10_i
+Args:
+  - String:          'load of type '
+  - Type:            i32
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     load
+    DebugLoc:        { File: binning.cpp, Line: 11, Column: 33 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     store
+    DebugLoc:        { File: binning.cpp, Line: 21, Column: 5 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: binning.cpp, Line: 11, Column: 21 }
+Function:        _Z12BinParticlesRK13InputDataTypeRA10_A10_i
+Args:
+  - String:          'sinking '
+  - Inst:            sext
+    DebugLoc:        { File: binning.cpp, Line: 11, Column: 21 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: binning.cpp, Line: 13, Column: 73 }
+Function:        _Z12BinParticlesRK13InputDataTypeRA10_A10_i
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: binning.cpp, Line: 13, Column: 73 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: binning.cpp, Line: 13, Column: 44 }
+Function:        _Z12BinParticlesRK13InputDataTypeRA10_A10_i
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: binning.cpp, Line: 13, Column: 44 }
+...
+--- !Missed
+Pass:            licm
+Name:            LoadWithLoopInvariantAddressInvalidated
+DebugLoc:        { File: binning.cpp, Line: 11, Column: 33 }
+Function:        _Z12BinParticlesRK13InputDataTypeRA10_A10_i
+Args:
+  - String:          failed to move load with loop-invariant address because the loop may invalidate its value
+...
+--- !Analysis
+Pass:            loop-vectorize
+Name:            CantComputeNumberOfIterations
+DebugLoc:        { File: binning.cpp, Line: 11, Column: 3 }
+Function:        _Z12BinParticlesRK13InputDataTypeRA10_A10_i
+Args:
+  - String:          'loop not vectorized: '
+  - String:          could not determine number of loop iterations
+...
+--- !Missed
+Pass:            loop-vectorize
+Name:            MissedDetails
+DebugLoc:        { File: binning.cpp, Line: 11, Column: 3 }
+Function:        _Z12BinParticlesRK13InputDataTypeRA10_A10_i
+Args:
+  - String:          loop not vectorized
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: binning.cpp, Line: 11, Column: 21 }
+Function:        _Z12BinParticlesRK13InputDataTypeRA10_A10_i
+Args:
+  - String:          'sinking '
+  - Inst:            sext
+    DebugLoc:        { File: binning.cpp, Line: 11, Column: 21 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: binning.cpp, Line: 13, Column: 73 }
+Function:        _Z12BinParticlesRK13InputDataTypeRA10_A10_i
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: binning.cpp, Line: 13, Column: 73 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: binning.cpp, Line: 13, Column: 44 }
+Function:        _Z12BinParticlesRK13InputDataTypeRA10_A10_i
+Args:
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: binning.cpp, Line: 13, Column: 44 }
+...
+--- !Missed
+Pass:            licm
+Name:            LoadWithLoopInvariantAddressInvalidated
+DebugLoc:        { File: binning.cpp, Line: 11, Column: 33 }
+Function:        _Z12BinParticlesRK13InputDataTypeRA10_A10_i
+Args:
+  - String:          failed to move load with loop-invariant address because the loop may invalidate its value
+...
+--- !Missed
+Pass:            regalloc
+Name:            LoopSpillReload
+DebugLoc:        { File: binning.cpp, Line: 11, Column: 3 }
+Function:        _Z12BinParticlesRK13InputDataTypeRA10_A10_i
+Args:
+  - NumSpills:       '1'
+  - String:          ' spills '
+  - NumReloads:      '1'
+  - String:          ' reloads '
+  - String:          generated in loop
+...
+--- !Analysis
+Pass:            prologepilog
+Name:            StackSize
+DebugLoc:        { File: binning.cpp, Line: 9, Column: 0 }
+Function:        _Z12BinParticlesRK13InputDataTypeRA10_A10_i
+Args:
+  - NumStackBytes:   '72'
+  - String:          ' stack bytes in function'
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: binning.cpp, Line: 0, Column: 0 }
+Function:        _Z12BinParticlesRK13InputDataTypeRA10_A10_i
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '9'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: binning.cpp, Line: 0, Column: 0 }
+Function:        _Z12BinParticlesRK13InputDataTypeRA10_A10_i
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '6'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: binning.cpp, Line: 0, Column: 0 }
+Function:        _Z12BinParticlesRK13InputDataTypeRA10_A10_i
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '23'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionMix
+DebugLoc:        { File: binning.cpp, Line: 23, Column: 1 }
+Function:        _Z12BinParticlesRK13InputDataTypeRA10_A10_i
+Args:
+  - String:          'BasicBlock: '
+  - BasicBlock:      ''
+  - String:          "\n"
+  - String:          ''
+  - String:          ': '
+  - INST_:           '8'
+  - String:          "\n"
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionCount
+DebugLoc:        { File: binning.cpp, Line: 9, Column: 0 }
+Function:        _Z12BinParticlesRK13InputDataTypeRA10_A10_i
+Args:
+  - NumInstructions: '46'
+  - String:          ' instructions in function'
+...
