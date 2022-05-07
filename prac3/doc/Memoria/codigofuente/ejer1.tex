@@ -7,4 +7,51 @@
     práctica. Con respecto al compilador a usar, sólo es necesario que utilices el \texttt{icc}, aunque también
     puedes usar algún otro compilador. A continuación, vamos a pasar al proceso de optimización. 
 \end{ejer}
+\newpage
 \subsection{Desarrollo}
+\begin{listing}[firstnumber=16]
+    @@ -17,4 +17,4 @@
+    //NORMAL
+    void BinParticles(const InputDataType & inputData, BinsType & outputBins) {
+        for (int i = 0; i < inputData.numDataPoints; i++) {
+            // Transforming from cylindrical to Cartesian coordinates: 
+            const FTYPE x = inputData.r[i]*COS(inputData.phi[i]); 
+            const FTYPE y = inputData.r[i]*SIN(inputData.phi[i]);
+            // Calculating the bin numbers for these coordinates: 
+            const int iX = int((x - xMin)*binsPerUnitX);
+            const int iY = int((y - yMin)*binsPerUnitY);
+            // Incrementing the appropriate bin in the counter
+            ++outputBins[iX][iY];
+        }
+    }
+\end{listing}
+\par Obtengo el rendimiento base en el ordenador.
+\begin{listing}[style=consola]
+    Baseline performance: 9.10e-02 GP/s 
+
+    Benchmarking...
+
+        Trial Time, s Speedup
+            1 7.474e-01 0.99
+            2 7.467e-01 0.99
+            3 7.438e-01 0.99
+            4 7.468e-01 0.99
+            5 7.489e-01 0.98
+            6 7.481e-01 0.99
+            7 7.446e-01 0.99
+            8 7.461e-01 0.99
+            9 7.467e-01 0.99
+            GP/s * 8.98e-02 ** 8.99e-02 **
+            9.02e-02
+            8.99e-02
+            8.96e-02
+            8.97e-02
+            9.01e-02
+            8.99e-02
+            8.99e-02
+            9.05e-02
+            10 7.417e-01 0.99 
+    --------------------------------------------------------- 
+    Optimized performance: 0.99 9.00e-02 +- 2.66e-04 GP/s
+    ---------------------------------------------------------
+\end{listing}

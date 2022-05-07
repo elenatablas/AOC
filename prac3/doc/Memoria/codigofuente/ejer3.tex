@@ -9,3 +9,45 @@
     vectorial y del número de unidades vectoriales que tengas, y comenta los resultados obtenidos.
 \end{ejer}
 \subsection{Desarrollo}
+\begin{listing}[firstnumber=16]
+    @@ -17,4 +17,4 @@
+    // VECTORIZADO
+    #define DEFAULT_SIZE 32
+    void BinParticles(const InputDataType & inputData, BinsType & outputBins) {
+        static int *iX = (int*)__builtin_assume_aligned((int*)_mm_malloc(inputData.numDataPoints*sizeof(int), DEFAULT_SIZE), DEFAULT_SIZE);
+        static int *iY = (int*)__builtin_assume_aligned((int*)_mm_malloc(inputData.numDataPoints*sizeof(int), DEFAULT_SIZE), DEFAULT_SIZE);
+    #pragma omp simd
+        for (int i = 0; i < inputData.numDataPoints; i++) { 
+            const FTYPE x = inputData.r[i]*COS(inputData.phi[i]); 
+            iX[i] = int((x - xMin)*binsPerUnitX);
+            const FTYPE y = inputData.r[i]*SIN(inputData.phi[i]); 
+            iY[i] = int((y - yMin)*binsPerUnitY); 
+            ++outputBins[iX[i]][iY[i]];
+        } 
+    }
+\end{listing}
+\par Obtengo el rendimiento usando el compilador para vectorizar automáticamente su ejecución.
+\begin{listing}[style=consola]
+    Baseline performance: 7.85e-02 GP/s 
+    
+    Benchmarking...
+        Trial Time, s       Speedup     GP/s *
+            1 1.089e+00     0.79    6.16e-02 **
+            2 9.023e-01     0.95    7.44e-02 **
+            3 8.709e-01     0.98    7.71e-02
+            4 8.934e-01     0.96    7.51e-02
+            5 8.742e-01     0.98    7.68e-02
+            6 8.668e-01     0.99    7.74e-02
+            7 8.566e-01     1.00    7.83e-02
+            8 8.435e-01     1.01    7.96e-02
+            9 8.340e-01     1.03    8.05e-02
+            10 8.512e-01    1.00    7.88e-02
+    ---------------------------------------------------------
+    Optimized performance: 0.99 7.79e-02 +- 1.60e-03 GP/s
+    ---------------------------------------------------------
+\end{listing}
+\par La vectorización, que consiste en indicar que los datos están alineados en la caché no mejora 
+el código. Incluso podría decir que lo ha empeorado. Los pragmas de gcc nos distintos a los de icc, 
+por tanto, he tenido que buscar información de como se hacía por internet, en la bibliografía están 
+las referencias. El informe generado es ilegible en gcc, aunque tanto en icc como en gcc indican 
+que no se el compilador no sabía vectorizarlo directamente.
